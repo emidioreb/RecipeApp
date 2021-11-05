@@ -1,7 +1,16 @@
-import React from 'react';
+import React, { useContext } from 'react';
+import Context from '../context/Context';
 
 function Bebidas() {
-  return <div>Bebidas</div>;
+  const { drinkData } = useContext(Context);
+  console.log(drinkData);
+  return (
+    <>
+      {drinkData.map((drink, index) => (
+        <p key={ index }>{drink.strDrink}</p>
+      ))}
+    </>
+  );
 }
 
 export default Bebidas;

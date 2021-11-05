@@ -1,5 +1,6 @@
 import React from 'react';
-import { Link } from 'react-router-dom';
+// import { Link } from 'react-router-dom';
+import Form from '../components/Form';
 import '../App.css';
 import rockGlass from '../images/rockGlass.svg';
 
@@ -11,14 +12,15 @@ export default function Landing() {
         Glass
       </object>
       <div className="btn-container">
-        <Link to="/bebidas">
+        <Form />
+        {/* <Link to="/bebidas">
           <button className="btn" type="button">
             Bebidas
           </button>
         </Link>
         <Link to="/comidas">
           <button className="btn" type="button">Comidas</button>
-        </Link>
+        </Link> */}
       </div>
     </div>
   );
