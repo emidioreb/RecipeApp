@@ -28,13 +28,20 @@
   transform-origin: 60px 78px;
 } */
 
-
 .meals > .logo {
   animation: shake 1.5s infinite ease;
   color: aliceblue;
   font-family: Montserrat , sans-serif;
   font-size: 3em;
   font-weight: 900;
+}
+
+.btn-container {
+  display: flex;
+}
+
+.btn {
+  margin-left: 1rem;
 }
 
 @keyframes shake {

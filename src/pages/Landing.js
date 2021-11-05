@@ -10,12 +10,16 @@ export default function Landing() {
       <object className="rocksGlass" type="image/svg+xml" data={ rockGlass }>
         Glass
       </object>
-      <Link to="/bebidas">
-        <button type="button">Bebidas</button>
-      </Link>
-      <Link to="/comidas">
-        <button type="button">Comidas</button>
-      </Link>
+      <div className="btn-container">
+        <Link to="/bebidas">
+          <button className="btn" type="button">
+            Bebidas
+          </button>
+        </Link>
+        <Link to="/comidas">
+          <button className="btn" type="button">Comidas</button>
+        </Link>
+      </div>
     </div>
   );
 }
