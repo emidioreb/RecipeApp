@@ -1,11 +1,10 @@
 import PropTypes from 'prop-types';
-import React, { useEffect, useState } from 'react';
-import Context from './Context';
+import React, { useEffect, useState, createContext, useContext } from 'react';
 
-export default function Provider({ children }) {
+const DrinkContext = createContext({});
+
+export function DrinkProvider({ children }) {
   const [drinkData, setDrinkData] = useState([]);
-  const [mail, setMail] = useState('');
-  const [password, setPassword] = useState('');
 
   const URL = 'https://www.thecocktaildb.com/api/json/v1/1/filter.php?a=Alcoholic';
 
@@ -20,20 +19,25 @@ export default function Provider({ children }) {
 
   const GlobalState = {
     drinkData,
-    mail,
-    setMail,
-    password,
-    setPassword,
+    setDrinkData,
   };
 
-  return <Context.Provider value={ GlobalState }>{children}</Context.Provider>;
+  return (
+    <DrinkContext.Provider value={ GlobalState }>
+      {children}
+    </DrinkContext.Provider>
+  );
 }
 
 // https://stackoverflow.com/questions/42122522/reactjs-what-should-the-proptypes-be-for-this-props-children
 
-Provider.propTypes = {
+DrinkProvider.propTypes = {
   children: PropTypes.oneOfType([
     PropTypes.arrayOf(PropTypes.node),
     PropTypes.node,
   ]).isRequired,
 };
+
+export default function useDrinks() {
+  return useContext(DrinkContext);
+}

@@ -1,9 +1,9 @@
-import React, { useContext } from 'react';
+import React from 'react';
 import Input from './Input';
-import Context from '../context/Context';
+import useLogin from '../hooks/useLogin';
 
 function Form() {
-  const { password, setPassword, mail, setMail } = useContext(Context);
+  const { password, setPassword, mail, setMail } = useLogin();
 
   return (
     <form>
