@@ -1,6 +1,7 @@
 import React from 'react';
 import './App.css';
 import { Route, Switch } from 'react-router';
+import Header from './components/Header';
 import { DrinkProvider } from './hooks/useDrinks';
 import { LoginProvider } from './hooks/useLogin';
 import { MealsProvider } from './hooks/useMeals';
@@ -15,6 +16,7 @@ function App() {
     <LoginProvider>
       <DrinkProvider>
         <MealsProvider>
+          <Header />
           <Switch>
             <Route exact path="/" component={ Login } />
             <Route path="/comidas" component={ Comidas } />
