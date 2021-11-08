@@ -10,7 +10,6 @@ import Bebidas from './pages/Bebidas';
 import Perfil from './pages/Perfil';
 import Explorar from './pages/Explorar';
 
-
 function App() {
   return (
     <LoginProvider>
