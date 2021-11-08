@@ -5,6 +5,8 @@ const MealsContext = createContext({});
 
 export function MealsProvider({ children }) {
   const [mealData, setMealData] = useState([]);
+  const [mealOption, setMealOption] = useState('');
+  const [mealSearch, setMealSearch] = useState('');
 
   const URL = 'https://www.thecocktaildb.com/api/json/v1/1/filter.php?a=Alcoholic';
 
@@ -20,6 +22,10 @@ export function MealsProvider({ children }) {
   const GlobalState = {
     mealData,
     setMealData,
+    mealOption,
+    setMealOption,
+    mealSearch,
+    setMealSearch,
   };
 
   return (
