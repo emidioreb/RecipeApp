@@ -1,4 +1,5 @@
 import React from 'react';
+import Footer from '../components/Footer';
 import useDrinks from '../hooks/useDrinks';
 
 function Bebidas() {
@@ -9,6 +10,7 @@ function Bebidas() {
       {drinkData.map((drink, index) => (
         <p key={ index }>{drink.strDrink}</p>
       ))}
+      <Footer />
     </>
   );
 }
