@@ -64,7 +64,6 @@ function SearchBar() {
         onClick={ () => submit() }
       >
         buscar
-
       </button>
     </form>
   );
