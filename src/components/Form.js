@@ -5,6 +5,13 @@ import useLogin from '../hooks/useLogin';
 function Form() {
   const { password, setPassword, mail, setMail } = useLogin();
 
+  const isEmailValid = (email) => {
+    const regexEmail = /^[\w-.]+@([\w-]+\.)+[\w-]{2,4}$/;
+    return regexEmail.test(email) === true;
+  };
+
+  const minPassWord = 6;
+
   return (
     <form>
       <Input
@@ -19,7 +26,11 @@ function Form() {
         info={ password }
         handleChange={ setPassword }
       />
-      <button type="button" data-testid="login-submit-btn">
+      <button
+        type="button"
+        data-testid="login-submit-btn"
+        disabled={ !isEmailValid(mail) || password.length < minPassWord }
+      >
         Entrar
       </button>
     </form>
