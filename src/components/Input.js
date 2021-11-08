@@ -15,6 +15,7 @@ function Input({ info, handleChange, testId }) {
 Input.propTypes = {
   handleChange: PropTypes.func.isRequired,
   info: PropTypes.string.isRequired,
+  testId: PropTypes.string.isRequired,
 };
 
 export default Input;
