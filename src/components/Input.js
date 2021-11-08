@@ -1,12 +1,13 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 
-function Input({ info, handleChange }) {
+function Input({ info, handleChange, testId }) {
   return (
     <input
       type="text"
       value={ info }
       onChange={ ({ target: { value } }) => handleChange(value) }
+      data-testid={ testId }
     />
   );
 }
