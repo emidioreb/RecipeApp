@@ -1,12 +1,12 @@
 import React from 'react';
-import SearchBar from '../components/SearchBar';
 import Footer from '../components/Footer';
+import Header from '../components/Header';
 
 export default function Comidas() {
   return (
     <div>
+      <Header title="Comidas" />
       Comidas
-      <SearchBar />
       <Footer />
     </div>
   );
