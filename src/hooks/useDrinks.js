@@ -8,7 +8,7 @@ export function DrinkProvider({ children }) {
   const [drinkOption, setDrinkOption] = useState('');
   const [drinkSearch, setDrinkSearch] = useState('');
 
-  const URL = 'https://www.thecocktaildb.com/api/json/v1/1/filter.php?a=Alcoholic';
+  const URL = 'https://www.thecocktaildb.com/api/json/v1/1/search.php?s=';
 
   useEffect(() => {
     const fetchApi = async () => {
