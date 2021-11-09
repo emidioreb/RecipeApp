@@ -6,14 +6,18 @@ export default function ExplorarBebidas() {
   return (
     <div>
       <Header title="Explorar bebidas" isVisible="none" />
-      <section>
+      <section className="explore-container">
         <Link to="/explorar/bebidas/ingredientes">
-          <button type="button" data-testid="explore-by-ingredient">
+          <button
+            className="explore-btn"
+            type="button"
+            data-testid="explore-by-ingredient"
+          >
             Por Ingredientes
           </button>
         </Link>
         <Link to="/bebidas/:id-da-receita">
-          <button type="button" data-testid="explore-surprise">
+          <button className="explore-btn" type="button" data-testid="explore-surprise">
             Me Surpreenda!
           </button>
         </Link>
