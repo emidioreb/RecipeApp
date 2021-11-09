@@ -35,7 +35,6 @@ export function MealsProvider({ children }) {
   const GlobalState = {
     mealData,
     setMealData,
-    mealFilter,
     setMealFilter,
   };
 

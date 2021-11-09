@@ -1,19 +1,26 @@
-import React from 'react';
+import React, { useState } from 'react';
 import useMeals from '../hooks/useMeals';
 
 function SearchBar() {
-  const { mealFilter, setMealFilter } = useMeals();
+  const [filter, setFilter] = useState({
+    searchInput: '',
+    ingrediente: false,
+    nome: false,
+    primeiraLetra: false,
+  });
+  const { setMealFilter } = useMeals();
 
   function submit() {
-    console.log('test');
+    setMealFilter(filter);
   }
 
   function oneLetterAllowed() {
+    const { primeiraLetra, searchInput } = filter;
     const ERROR_MSG = 'Sua busca deve conter somente 1 (um) caracter';
-    if (mealFilter.primeiraLetra === true && mealFilter.searchInput.length >= 1) {
+    if (primeiraLetra === true && searchInput.length >= 1) {
       global.alert(ERROR_MSG);
-      setMealFilter({
-        ...mealFilter,
+      setFilter({
+        ...filter,
         searchInput: '',
       });
     }
@@ -23,12 +30,12 @@ function SearchBar() {
     <form className="filter-menu">
       <input
         type="text"
-        value={ mealFilter.searchInput }
+        value={ filter.searchInput }
         data-testid="search-input"
         placeholder="Buscar Receita"
         onChange={ ({ target: { value } }) => {
-          setMealFilter({
-            ...mealFilter,
+          setFilter({
+            ...filter,
             searchInput: value,
           });
           oneLetterAllowed();
@@ -39,9 +46,9 @@ function SearchBar() {
           type="radio"
           name="radio-filter"
           data-testid="ingredient-search-radio"
-          value={ mealFilter.ingredient }
-          onChange={ () => setMealFilter({
-            ...mealFilter,
+          value={ filter.ingrediente }
+          onChange={ () => setFilter({
+            ...filter,
             ingrediente: true,
             nome: false,
             primeiraLetra: false,
@@ -54,9 +61,9 @@ function SearchBar() {
           type="radio"
           name="radio-filter"
           data-testid="name-search-radio"
-          value={ mealFilter }
-          onChange={ () => setMealFilter({
-            ...mealFilter,
+          value={ filter }
+          onChange={ () => setFilter({
+            ...filter,
             ingrediente: false,
             nome: true,
             primeiraLetra: false,
@@ -69,9 +76,9 @@ function SearchBar() {
           type="radio"
           name="radio-filter"
           data-testid="first-letter-search-radio"
-          value={ mealFilter }
-          onChange={ () => setMealFilter({
-            ...mealFilter,
+          value={ filter }
+          onChange={ () => setFilter({
+            ...filter,
             ingrediente: false,
             nome: false,
             primeiraLetra: true,
