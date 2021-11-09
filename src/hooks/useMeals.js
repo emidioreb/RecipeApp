@@ -5,27 +5,38 @@ const MealsContext = createContext({});
 
 export function MealsProvider({ children }) {
   const [mealData, setMealData] = useState([]);
-  const [mealOption, setMealOption] = useState('');
-  const [mealSearch, setMealSearch] = useState('');
+  const [mealFilter, setMealFilter] = useState({
+    searchInput: '',
+    ingrediente: false,
+    nome: false,
+    primeiraLetra: false,
+  });
 
-  const URL = 'https://www.thecocktaildb.com/api/json/v1/1/filter.php?a=Alcoholic';
+  const BASE_URL = 'https://www.themealdb.com/api/json/v1/1/filter.php?';
+  let URL = 'https://www.themealdb.com/api/json/v1/1/filter.php?c=Seafood';
+
+  if (mealFilter.ingrediente) {
+    URL = `${BASE_URL}i=${mealFilter.searchInput}`;
+  } else if (mealFilter.nome) {
+    URL = `${BASE_URL}s=${mealFilter.searchInput}`;
+  } else if (mealFilter.primeiraLetra) {
+    URL = `${BASE_URL}f=${mealFilter.searchInput}`;
+  }
 
   useEffect(() => {
     const fetchApi = async () => {
       const response = await fetch(URL);
-      const { drinks } = await response.json();
-      setMealData(drinks);
+      const { meals } = await response.json();
+      setMealData(meals);
     };
     fetchApi();
-  }, []);
+  }, [URL]);
 
   const GlobalState = {
     mealData,
     setMealData,
-    mealOption,
-    setMealOption,
-    mealSearch,
-    setMealSearch,
+    mealFilter,
+    setMealFilter,
   };
 
   return (

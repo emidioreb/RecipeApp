@@ -1,6 +1,6 @@
 import React from 'react';
 import { useHistory } from 'react-router';
-import Input from './Input';
+import InputLogin from './InputLogin';
 import useLogin from '../hooks/useLogin';
 import { saveToken, emailToken } from '../localStorage';
 
@@ -12,10 +12,10 @@ function Form() {
     return regexEmail.test(email) === true;
   };
 
-  const minPassWord = 6;
+  const MIN_PASSWORD = 6;
   const { push } = useHistory();
 
-  const toMeals = () => {
+  const login = () => {
     saveToken();
     emailToken(mail);
     push('/comidas');
@@ -23,13 +23,13 @@ function Form() {
 
   return (
     <form className="login-form">
-      <Input
+      <InputLogin
         inputType="text"
         testId="email-input"
         info={ mail }
         handleChange={ setMail }
       />
-      <Input
+      <InputLogin
         inputType="password"
         testId="password-input"
         info={ password }
@@ -39,8 +39,8 @@ function Form() {
         className="form-btn"
         type="button"
         data-testid="login-submit-btn"
-        disabled={ !isEmailValid(mail) || password.length <= minPassWord }
-        onClick={ toMeals }
+        disabled={ !isEmailValid(mail) || password.length <= MIN_PASSWORD }
+        onClick={ login }
       >
         Entrar
       </button>

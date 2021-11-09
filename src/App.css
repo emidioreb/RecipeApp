@@ -126,6 +126,7 @@ body {
 
 .footer-container {
   align-items: center;
+  background: #14d38a;
   display: flex;
   justify-content: space-around;
   width: 100%;
@@ -171,3 +172,25 @@ body {
   margin-top: 1rem;
 }
 
+.recipe-thumb {
+  max-width: 50%;
+}
+
+.recipe-container {
+  display: flex;
+  flex-flow: row wrap;
+  margin-top: 2rem;
+  width: 100vw;
+}
+
+.recipe-card {
+  align-items: center;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  padding: 1rem;
+}
+
+.recipe-card h4 {
+  margin-bottom: 0.5rem;
+}

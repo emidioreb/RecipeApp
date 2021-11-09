@@ -9,8 +9,6 @@ export default function Header({ title, isVisible }) {
   const [isSearchBarActive, setIsSearchBarActive] = useState(false);
   const history = useHistory();
 
-  console.log(history.location.pathname);
-
   return (
     <header className="header">
       <div className="header-menu">
