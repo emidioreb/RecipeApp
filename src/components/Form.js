@@ -22,20 +22,21 @@ function Form() {
   };
 
   return (
-    <form>
+    <form className="login-form">
       <Input
-        type="text"
+        inputType="text"
         testId="email-input"
         info={ mail }
         handleChange={ setMail }
       />
       <Input
-        type="password"
+        inputType="password"
         testId="password-input"
         info={ password }
         handleChange={ setPassword }
       />
       <button
+        className="form-btn"
         type="button"
         data-testid="login-submit-btn"
         disabled={ !isEmailValid(mail) || password.length <= minPassWord }

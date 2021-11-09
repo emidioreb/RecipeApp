@@ -3,7 +3,7 @@ import Form from '../components/Form';
 import '../App.css';
 import rockGlass from '../images/rockGlass.svg';
 
-export default function Landing() {
+export default function Login() {
   return (
     <div className="meals">
       <span className="logo">Grupo 4</span>

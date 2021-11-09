@@ -10,7 +10,7 @@ function SearchBar() {
     console.log('test');
   }
   return (
-    <form>
+    <form className="filter-menu">
       <input
         type="text"
         value={ drinkOption }
@@ -30,7 +30,6 @@ function SearchBar() {
             setMealOption(event.target.value);
             setDrinkOption(event.target.value);
           } }
-
         />
         Ingredientes
       </label>
