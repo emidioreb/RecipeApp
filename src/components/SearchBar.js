@@ -1,4 +1,5 @@
 import React, { useState } from 'react';
+import useDrinks from '../hooks/useDrinks';
 import useMeals from '../hooks/useMeals';
 
 const history = window.location.pathname;
@@ -11,6 +12,7 @@ function SearchBar() {
     primeiraLetra: false,
   });
   const { setMealFilter } = useMeals();
+  const { setDrinkFilter } = useDrinks();
 
   function submit() {
     switch (history) {
@@ -18,7 +20,7 @@ function SearchBar() {
       setMealFilter(filter);
       break;
     case '/bebidas':
-      console.log('bebidas');
+      setDrinkFilter(filter);
       break;
     default:
     }
@@ -34,6 +36,17 @@ function SearchBar() {
         searchInput: '',
       });
     }
+  }
+
+  function checkMaximumLetter() {
+    const ERROR_MSG = 'Sua busca deve conter somente 1 (um) caracter';
+    if (filter.searchInput.length > 1) {
+      global.alert(ERROR_MSG);
+    }
+    setFilter({
+      ...filter,
+      searchInput: '',
+    });
   }
 
   return (
@@ -87,6 +100,7 @@ function SearchBar() {
           name="radio-filter"
           data-testid="first-letter-search-radio"
           value={ filter }
+          onClick={ () => checkMaximumLetter() }
           onChange={ () => setFilter({
             ...filter,
             ingrediente: false,

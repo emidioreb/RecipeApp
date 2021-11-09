@@ -5,10 +5,23 @@ const DrinkContext = createContext({});
 
 export function DrinkProvider({ children }) {
   const [drinkData, setDrinkData] = useState([]);
-  const [drinkOption, setDrinkOption] = useState('');
-  const [drinkSearch, setDrinkSearch] = useState('');
+  const [drinkFilter, setDrinkFilter] = useState({
+    searchInput: '',
+    ingrediente: false,
+    nome: false,
+    primeiraLetra: false,
+  });
 
-  const URL = 'https://www.thecocktaildb.com/api/json/v1/1/search.php?s=';
+  const BASE_URL = 'https://www.thecocktaildb.com/api/json/v1/1/filter.php?';
+  let URL = 'https://www.thecocktaildb.com/api/json/v1/1/search.php?s=';
+
+  if (drinkFilter.ingrediente) {
+    URL = `${BASE_URL}i=${drinkFilter.searchInput}`;
+  } else if (drinkFilter.nome) {
+    URL = `${BASE_URL}s=${drinkFilter.searchInput}`;
+  } else if (drinkFilter.primeiraLetra) {
+    URL = `${BASE_URL}f=${drinkFilter.searchInput}`;
+  }
 
   useEffect(() => {
     const fetchApi = async () => {
@@ -17,15 +30,12 @@ export function DrinkProvider({ children }) {
       setDrinkData(drinks);
     };
     fetchApi();
-  }, []);
+  }, [URL]);
 
   const GlobalState = {
     drinkData,
     setDrinkData,
-    drinkOption,
-    setDrinkOption,
-    drinkSearch,
-    setDrinkSearch,
+    setDrinkFilter,
   };
 
   return (

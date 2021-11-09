@@ -6,7 +6,6 @@ import useDrinks from '../hooks/useDrinks';
 
 export default function Comidas() {
   const { drinkData } = useDrinks();
-  console.log(drinkData);
   const NUM_MAX_CARDS = 12;
   return (
     <div>
