@@ -8,7 +8,7 @@ export default function Comidas() {
   const { mealData } = useMeals();
   return (
     <div>
-      <Header title="Comidas" isVisible="none" />
+      <Header title="Comidas" />
       <section className="recipe-container">
         {mealData.map((meal) => (
           <RecipeCard
