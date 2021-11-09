@@ -1,5 +1,10 @@
 import React from 'react';
+import Header from '../components/Header';
 
 export default function ReceitasFavoritas() {
-  return <div>Receitas Favoritas</div>;
+  return (
+    <div>
+      <Header title="Receitas Favoritas" isVisible="none" />
+    </div>
+  );
 }
