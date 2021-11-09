@@ -2,6 +2,8 @@ import React, { useState } from 'react';
 import useDrinks from '../hooks/useDrinks';
 import useMeals from '../hooks/useMeals';
 
+const history = window.location.pathname;
+
 function SearchBar() {
   const [filter, setFilter] = useState({
     searchInput: '',
@@ -13,8 +15,15 @@ function SearchBar() {
   const { setDrinkFilter } = useDrinks();
 
   function submit() {
-    setMealFilter(filter);
-    setDrinkFilter(filter);
+    switch (history) {
+    case '/comidas':
+      setMealFilter(filter);
+      break;
+    case '/bebidas':
+      setDrinkFilter(filter);
+      break;
+    default:
+    }
   }
 
   function oneLetterAllowed() {
