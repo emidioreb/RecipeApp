@@ -12,24 +12,30 @@ export default function Header({ title, isVisible }) {
   console.log(history.location.pathname);
 
   return (
-    <header>
-      <button
-        onClick={ () => history.push('/perfil') }
-        type="button"
-        data-testid="profile-top-btn"
-      >
-        <img src={ profileIcon } alt="Profile icon" />
-      </button>
-      <h1 data-testid="page-title">{title}</h1>
-      <button
-        style={ { display: isVisible } }
-        onClick={ () => setIsSearchBarActive(!isSearchBarActive) }
-        type="button"
-        data-testid="search-top-btn"
-      >
-        <img src={ searchIcon } alt="Search icon" />
-      </button>
-      {isSearchBarActive && <SearchBar />}
+    <header className="header">
+      <div className="header-menu">
+        <button
+          onClick={ () => history.push('/perfil') }
+          type="button"
+          data-testid="profile-top-btn"
+        >
+          <img src={ profileIcon } alt="Profile icon" />
+        </button>
+        <h1 data-testid="page-title">{title}</h1>
+        <button
+          style={ { display: isVisible } }
+          onClick={ () => setIsSearchBarActive(!isSearchBarActive) }
+          type="button"
+          data-testid="search-top-btn"
+        >
+          <img src={ searchIcon } alt="Search icon" />
+        </button>
+      </div>
+      {isSearchBarActive && (
+        <div>
+          <SearchBar />
+        </div>
+      )}
     </header>
   );
 }

@@ -6,20 +6,32 @@ import mealIcon from '../images/mealIcon.svg';
 
 export default function Explorar() {
   return (
-    <div>
+    <>
       <Header title="Explorar" isVisible="none" />
-      <Link to="/explorar/bebidas">
-        <button type="button" data-testid="explore-food">
-          <img src={ mealIcon } alt="ícone de Comidas" />
-          Explorar Bebidas
-        </button>
-      </Link>
-      <Link to="/explorar/comidas">
-        <button type="button" data-testid="explore-drinks">
-          <img src={ drinkIcon } alt="ícone de Bebidas" />
-          Explorar Comidas
-        </button>
-      </Link>
-    </div>
+      <div className="explore-container">
+        <Link to="/explorar/bebidas">
+          <button
+            className="explore-btn"
+            type="button"
+            data-testid="explore-food"
+          >
+            <img src={ mealIcon } alt="ícone de Comidas" />
+            <p className="button-text">Explorar Bebidas</p>
+          </button>
+        </Link>
+        <Link to="/explorar/comidas">
+          <button
+            className="explore-btn"
+            type="button"
+            data-testid="explore-drinks"
+          >
+            <img src={ drinkIcon } alt="ícone de Bebidas" />
+            <p className="button-text">
+              Explorar Comidas
+            </p>
+          </button>
+        </Link>
+      </div>
+    </>
   );
 }
