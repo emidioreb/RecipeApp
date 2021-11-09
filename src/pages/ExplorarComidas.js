@@ -1,5 +1,10 @@
 import React from 'react';
+import Header from '../components/Header';
 
 export default function ExplorarComidas() {
-  return <div>Explorar Comidas</div>;
+  return (
+    <div>
+      <Header title="Explorar comidas" isVisible="none" />
+    </div>
+  );
 }
