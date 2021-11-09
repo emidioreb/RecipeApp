@@ -108,7 +108,7 @@ body {
   margin-top: 1rem;
   padding: 0.6rem;
   transition: 0.2s;
-  width : 40%;
+  width : 38%;
 }
 
 .form-btn:not( [ disabled ] ):hover {
@@ -173,14 +173,14 @@ body {
 }
 
 .recipe-thumb {
-  max-width: 50%;
+  max-width: 60%;
 }
 
 .recipe-container {
   display: flex;
   flex-flow: row wrap;
   margin-top: 2rem;
-  width: 100vw;
+  width: 96vw;
 }
 
 .recipe-card {
