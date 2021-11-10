@@ -7,7 +7,7 @@ import RecipeCard from '../components/RecipeCard';
 import useMeals from '../hooks/useMeals';
 
 export default function Comidas() {
-  const { push } = useHistory();
+  const { push, location } = useHistory();
   const { mealData } = useMeals();
   const NUM_MAX_CARDS = 12;
   if (mealData.length === 1) {
@@ -25,7 +25,7 @@ export default function Comidas() {
             id={ index }
             recipeTitle={ meal.strMeal }
             recipeThumb={ meal.strMealThumb }
-            recipe={ `${history.location.pathname}/` }
+            recipe={ `${location.pathname}/` }
           />)
         ))}
       </section>
