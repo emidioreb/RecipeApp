@@ -14,14 +14,15 @@ export function DrinkProvider({ children }) {
   const [catDrinks, setCatDrinks] = useState('');
 
   const BASE_URL = 'https://www.thecocktaildb.com/api/json/v1/1/filter.php?';
+  const SEARCH_URL = 'https://www.thecocktaildb.com/api/json/v1/1/search.php?';
   let URL = 'https://www.thecocktaildb.com/api/json/v1/1/search.php?s=';
 
   if (drinkFilter.ingrediente) {
     URL = `${BASE_URL}i=${drinkFilter.searchInput}`;
   } else if (drinkFilter.nome) {
-    URL = `${BASE_URL}s=${drinkFilter.searchInput}`;
+    URL = `${SEARCH_URL}s=${drinkFilter.searchInput}`;
   } else if (drinkFilter.primeiraLetra) {
-    URL = `${BASE_URL}f=${drinkFilter.searchInput}`;
+    URL = `${SEARCH_URL}f=${drinkFilter.searchInput}`;
   } else if (catDrinks.length > 0) {
     URL = `https://www.thecocktaildb.com/api/json/v1/1/filter.php?c=${catDrinks}`;
   }

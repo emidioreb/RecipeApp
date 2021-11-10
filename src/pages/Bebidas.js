@@ -6,7 +6,7 @@ import Header from '../components/Header';
 import RecipeCard from '../components/RecipeCard';
 import useDrinks from '../hooks/useDrinks';
 
-export default function Comidas() {
+export default function Bebidas() {
   const { drinkData } = useDrinks();
   const NUM_MAX_CARDS = 12;
   const history = useHistory();
