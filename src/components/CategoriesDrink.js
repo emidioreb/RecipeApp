@@ -3,7 +3,7 @@ import useDrinks from '../hooks/useDrinks';
 
 export default function CategoriesDrink() {
   const [categoryDrink, setCategoryDrink] = useState([]);
-  const { setCatDrinks } = useDrinks();
+  const { catDrinks, setCatDrinks } = useDrinks();
   const NUM_MAX_BUTTONS = 5;
 
   const url = 'https://www.thecocktaildb.com/api/json/v1/1/list.php?c=list';
@@ -25,7 +25,11 @@ export default function CategoriesDrink() {
             data-testid={ `${cat.strCategory}-category-filter` }
             type="button"
             key={ cat.strCategory }
-            onClick={ () => setCatDrinks(cat.strCategory) }
+            onClick={ () => (
+              catDrinks.length > 0
+                ? setCatDrinks([])
+                : setCatDrinks(cat.strCategory)
+            ) }
           >
             {cat.strCategory}
           </button>)))}
