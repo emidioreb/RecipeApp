@@ -15,7 +15,7 @@ export default function Explorar() {
             type="button"
             data-testid="explore-food"
           >
-            <img src={ mealIcon } alt="ícone de Comidas" />
+            <img src={ drinkIcon } alt="ícone de Comidas" />
             <p className="button-text">Explorar Bebidas</p>
           </button>
         </Link>
@@ -25,7 +25,7 @@ export default function Explorar() {
             type="button"
             data-testid="explore-drinks"
           >
-            <img src={ drinkIcon } alt="ícone de Bebidas" />
+            <img src={ mealIcon } alt="ícone de Bebidas" />
             <p className="button-text">
               Explorar Comidas
             </p>
