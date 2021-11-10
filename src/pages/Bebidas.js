@@ -1,4 +1,5 @@
 import React from 'react';
+import CategoriesDrink from '../components/CategoriesDrink';
 import Footer from '../components/Footer';
 import Header from '../components/Header';
 import RecipeCard from '../components/RecipeCard';
@@ -10,6 +11,7 @@ export default function Comidas() {
   return (
     <div>
       <Header title="Bebidas" />
+      <CategoriesDrink />
       <section className="recipe-container">
         {drinkData.map((drink, index) => (
           index < NUM_MAX_CARDS && (<RecipeCard
