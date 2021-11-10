@@ -6,26 +6,24 @@ const MealIngredientsContext = createContext({});
 export function MealIngredientsProvider({ children }) {
   const [ingredientData, setIngredientData] = useState([]);
   const [ingredientRequestURL, setIngredientRequestURL] = useState('');
+  const [type, setType] = useState('');
 
-  // if (ingredientData === 'https://www.thecocktaildb.com/api/json/v1/1/list.php?i=list') {
-  //   const xulambs = 'meals';
-  // }
-  // if (ingredientData === 'https://www.themealdb.com/api/json/v1/1/list.php?i=list') {
-  //   xulambs = 'drinks';
-  // }
+  const fetchApi = async (food) => {
+    const response = await fetch(ingredientRequestURL);
+    const resolve = await response.json();
+    setIngredientData(resolve[food]);
+  };
+
   useEffect(() => {
-    const fetchApi = async () => {
-      const response = await fetch(ingredientRequestURL);
-      const { meals } = await response.json();
-      setIngredientData(meals);
-    };
-    fetchApi();
+    fetchApi(type);
   }, [ingredientRequestURL]);
 
   const GlobalState = {
     ingredientData,
     setIngredientData,
     setIngredientRequestURL,
+    setType,
+    type,
   };
 
   return (
