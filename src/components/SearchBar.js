@@ -100,13 +100,15 @@ function SearchBar() {
           name="radio-filter"
           data-testid="first-letter-search-radio"
           value={ filter }
-          onClick={ () => checkMaximumLetter() }
-          onChange={ () => setFilter({
-            ...filter,
-            ingrediente: false,
-            nome: false,
-            primeiraLetra: true,
-          }) }
+          onChange={ () => {
+            setFilter({
+              ...filter,
+              ingrediente: false,
+              nome: false,
+              primeiraLetra: true,
+            });
+            checkMaximumLetter();
+          } }
         />
         Primeira letra
       </label>
