@@ -5,14 +5,30 @@
   text-decoration: none;
 }
 
+:root {
+
+  --main-color: #292841;
+
+  --secondary-color: #1c1b29;
+
+  --font-color: white;
+
+  --warning-color: #e7366b;
+
+  --button-color: #dbe7ff;
+
+  --grey-scale: #b5b6ba;
+
+}
+
 body {
-  background: #0fa36b;
+  background: var(--main-color);
 }
 
 .meals {
   align-items: center;
-  background: #0fa36b;
-  color: #464646;
+  background: var(--main-color);
+  color: var(--grey-scale);
   display: flex;
   flex-direction: column;
   font-family: sans-serif;
@@ -133,6 +149,7 @@ body {
 }
 
 .header {
+  color: var(--font-color);
   display: flex;
   flex-direction: column;
   justify-content: space-around;
