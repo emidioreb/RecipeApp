@@ -5,14 +5,30 @@
   text-decoration: none;
 }
 
+:root {
+
+  --main-color: #292841;
+
+  --secondary-color: #1c1b29;
+
+  --font-color: white;
+
+  --warning-color: #e7366b;
+
+  --button-color: #dbe7ff;
+
+  --grey-scale: #b5b6ba;
+
+}
+
 body {
-  background: #0fa36b;
+  background: var(--main-color);
 }
 
 .meals {
   align-items: center;
-  background: #0fa36b;
-  color: #464646;
+  background: var(--main-color);
+  color: var(--grey-scale);
   display: flex;
   flex-direction: column;
   font-family: sans-serif;
@@ -103,22 +119,47 @@ body {
 
 .form-btn {
   align-self: center;
-  background: #14d38a;
+  background: var(--secondary-color);
   border-radius: 8px;
+  color: var(--font-color);
   margin-top: 1rem;
   padding: 0.6rem;
   transition: 0.2s;
   width : 38%;
 }
 
+.category-drink {
+  min-height: 3.5rem;
+}
+
+footer .form-btn {
+  align-items: center;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  width: auto;
+}
+
+footer .form-btn img {
+  margin-bottom: 0.5rem;
+}
+
+header .form-btn {
+  width: auto;
+}
+
+.svg-color {
+  filter: invert(1);
+}
+
 .form-btn:not( [ disabled ] ):hover {
-  filter: brightness(1.2) drop-shadow(3px 3px 6px #14d38a);
+  filter: brightness(1.5) drop-shadow(3px 3px 6px var(--secondary-color));
 }
 
 .footer {
   bottom: 0;
   display: flex;
-  height: 10vh;
+  height: 14vh;
   left: 0;
   position: fixed;
   width: 100vw;
@@ -126,13 +167,14 @@ body {
 
 .footer-container {
   align-items: center;
-  background: #14d38a;
+  background: var(--secondary-color);
   display: flex;
   justify-content: space-around;
   width: 100%;
 }
 
 .header {
+  color: var(--font-color);
   display: flex;
   flex-direction: column;
   justify-content: space-around;
@@ -161,12 +203,15 @@ body {
 
 .explore-btn {
   align-items: center;
+  background: var(--secondary-color);
   border-radius: 8px;
+  color: var(--font-color);
   display: flex;
   flex-direction: column;
   justify-content: center;
   margin-top: 1rem;
   padding: 3rem;
+  transition: 0.2s;
 }
 
 .button-text {
@@ -186,6 +231,7 @@ body {
 
 .recipe-card {
   align-items: center;
+  color: var(--font-color);
   display: flex;
   flex-direction: column;
   justify-content: center;
@@ -194,4 +240,10 @@ body {
 
 .recipe-card h4 {
   margin-bottom: 0.5rem;
+}
+
+.categories-container {
+  display: flex;
+  flex-flow: row nowrap;
+  margin-top: 1rem;
 }

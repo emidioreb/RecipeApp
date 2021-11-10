@@ -17,10 +17,11 @@ export default function CategoriesDrink() {
   }, [url]);
 
   return (
-    <div>
+    <div className="categories-container">
       {categoryDrink.map((cat, index) => (
         index < NUM_MAX_BUTTONS && (
           <button
+            className="form-btn category-drink"
             data-testid={ `${cat.strCategory}-category-filter` }
             type="button"
             key={ cat.strCategory }
