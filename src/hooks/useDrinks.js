@@ -15,7 +15,7 @@ export function DrinkProvider({ children }) {
   console.log(catDrinks);
 
   const BASE_URL = 'https://www.thecocktaildb.com/api/json/v1/1/filter.php?';
-  const SEARCH_URL = 'https://www.themealdb.com/api/json/v1/1/search.php?';
+  const SEARCH_URL = 'https://www.thecocktaildb.com/api/json/v1/1/search.php?';
   let URL = 'https://www.thecocktaildb.com/api/json/v1/1/search.php?s=';
 
   if (drinkFilter.ingrediente) {
