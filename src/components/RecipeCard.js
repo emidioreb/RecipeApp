@@ -6,7 +6,7 @@ export default function RecipeCard({ recipeTitle, recipeThumb, id, idRecipe, rec
   return (
     <div className="recipe-card" data-testid={ `${id}-recipe-card` }>
       <h4 data-testid={ `${id}-card-name` }>{recipeTitle}</h4>
-      <Link to={ `${recipe}${idRecipe}` }>
+      <Link className="recipe-card" to={ `${recipe}${idRecipe}` }>
         <img
           data-testid={ `${id}-card-img` }
           className="recipe-thumb"
