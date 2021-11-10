@@ -1,5 +1,6 @@
 import PropTypes from 'prop-types';
 import React, { useEffect, useState, createContext, useContext } from 'react';
+import { useHistory } from 'react-router-dom';
 
 const DrinkContext = createContext({});
 
@@ -12,7 +13,7 @@ export function DrinkProvider({ children }) {
     primeiraLetra: false,
   });
   const [catDrinks, setCatDrinks] = useState('');
-  console.log(catDrinks);
+  const { push } = useHistory();
 
   const BASE_URL = 'https://www.thecocktaildb.com/api/json/v1/1/filter.php?';
   const SEARCH_URL = 'https://www.thecocktaildb.com/api/json/v1/1/search.php?';
@@ -32,6 +33,7 @@ export function DrinkProvider({ children }) {
     const fetchApi = async () => {
       const response = await fetch(URL);
       const { drinks } = await response.json();
+      console.log(drinks);
       setDrinkData(drinks);
     };
     fetchApi();
