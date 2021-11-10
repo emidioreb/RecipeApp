@@ -15,7 +15,7 @@ export function IngredientsProvider({ children }) {
       setIngredientData(resolve[food]);
     };
     fetchApi(type);
-  }, [ingredientRequestURL]);
+  }, [ingredientRequestURL, type]);
 
   const GlobalState = {
     ingredientData,
