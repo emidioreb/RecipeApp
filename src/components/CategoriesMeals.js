@@ -16,11 +16,13 @@ export default function Categories() {
     };
     fetchApi();
   }, [url]);
+
   return (
-    <div>
+    <div className="categories-container">
       {categoryMeals.map((cat, index) => (
         index < NUM_MAX_BUTTONS && (
           <button
+            className="form-btn"
             data-testid={ `${cat.strCategory}-category-filter` }
             type="button"
             key={ cat.strCategory }
