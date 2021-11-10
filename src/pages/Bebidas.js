@@ -1,5 +1,5 @@
 import React from 'react';
-import { useHistory } from 'react-router';
+import { useHistory } from 'react-router;
 import CategoriesDrink from '../components/CategoriesDrink';
 import Footer from '../components/Footer';
 import Header from '../components/Header';
@@ -7,10 +7,12 @@ import RecipeCard from '../components/RecipeCard';
 import useDrinks from '../hooks/useDrinks';
 
 export default function Bebidas() {
+  const { push } = useHistory();
   const { drinkData } = useDrinks();
   const NUM_MAX_CARDS = 12;
-  const history = useHistory();
-
+  if (drinkData.length === 1) {
+    push(`/bebidas/${drinkData[0].idDrink}`);
+  }
   return (
     <div>
       <Header title="Bebidas" />

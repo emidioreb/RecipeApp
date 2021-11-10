@@ -12,7 +12,6 @@ export function DrinkProvider({ children }) {
     primeiraLetra: false,
   });
   const [catDrinks, setCatDrinks] = useState('');
-
   const BASE_URL = 'https://www.thecocktaildb.com/api/json/v1/1/filter.php?';
   const SEARCH_URL = 'https://www.thecocktaildb.com/api/json/v1/1/search.php?';
   let URL = 'https://www.thecocktaildb.com/api/json/v1/1/search.php?s=';
