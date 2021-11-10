@@ -4,7 +4,7 @@ import useMeals from '../hooks/useMeals';
 
 export default function Categories() {
   const [categoryMeals, setCategoryMeals] = useState([]);
-  const { setCatMeals } = useMeals();
+  const { catMeals, setCatMeals } = useMeals();
   const NUM_MAX_BUTTONS = 5;
 
   const url = 'https://www.themealdb.com/api/json/v1/1/list.php?c=list';
@@ -19,6 +19,14 @@ export default function Categories() {
 
   return (
     <div className="categories-container">
+      <button
+        className="form-btn category-drink"
+        data-testid="All-category-filter"
+        type="button"
+        onClick={ () => setCatMeals([]) }
+      >
+        All
+      </button>
       {categoryMeals.map((cat, index) => (
         index < NUM_MAX_BUTTONS && (
           <button
@@ -26,7 +34,11 @@ export default function Categories() {
             data-testid={ `${cat.strCategory}-category-filter` }
             type="button"
             key={ cat.strCategory }
-            onClick={ () => setCatMeals(cat.strCategory) }
+            onClick={ () => (
+              catMeals === cat.strCategory
+                ? setCatMeals([])
+                : setCatMeals(cat.strCategory)
+            ) }
           >
             {cat.strCategory}
           </button>)))}
