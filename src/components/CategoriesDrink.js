@@ -26,7 +26,7 @@ export default function CategoriesDrink() {
             type="button"
             key={ cat.strCategory }
             onClick={ () => (
-              catDrinks.length > 0
+              catDrinks === cat.strCategory
                 ? setCatDrinks([])
                 : setCatDrinks(cat.strCategory)
             ) }

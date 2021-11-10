@@ -27,7 +27,7 @@ export default function Categories() {
             type="button"
             key={ cat.strCategory }
             onClick={ () => (
-              catMeals.length > 0
+              catMeals === cat.strCategory
                 ? setCatMeals([])
                 : setCatMeals(cat.strCategory)
             ) }
