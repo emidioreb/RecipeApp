@@ -31,11 +31,7 @@ export default function Header({ title, isVisible }) {
           <img className="svg-color" src={ searchIcon } alt="Search icon" />
         </button>
       </div>
-      {isSearchBarActive && (
-        <div>
-          <SearchBar />
-        </div>
-      )}
+      {isSearchBarActive && <SearchBar />}
     </header>
   );
 }
