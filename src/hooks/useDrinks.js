@@ -11,6 +11,8 @@ export function DrinkProvider({ children }) {
     nome: false,
     primeiraLetra: false,
   });
+  const [catDrinks, setCatDrinks] = useState('');
+  console.log(catDrinks);
 
   const BASE_URL = 'https://www.thecocktaildb.com/api/json/v1/1/filter.php?';
   let URL = 'https://www.thecocktaildb.com/api/json/v1/1/search.php?s=';
@@ -21,6 +23,8 @@ export function DrinkProvider({ children }) {
     URL = `${BASE_URL}s=${drinkFilter.searchInput}`;
   } else if (drinkFilter.primeiraLetra) {
     URL = `${BASE_URL}f=${drinkFilter.searchInput}`;
+  } else if (catDrinks.length > 0) {
+    URL = `https://www.thecocktaildb.com/api/json/v1/1/filter.php?c=${catDrinks}`;
   }
 
   useEffect(() => {
@@ -36,6 +40,8 @@ export function DrinkProvider({ children }) {
     drinkData,
     setDrinkData,
     setDrinkFilter,
+    setCatDrinks,
+    catDrinks,
   };
 
   return (
