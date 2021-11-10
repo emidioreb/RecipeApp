@@ -19,6 +19,7 @@ export default function CategoriesDrink() {
   return (
     <div className="categories-container">
       <button
+        className="form-btn category-drink"
         type="button"
         onClick={ () => setCatDrinks([]) }
         data-testid="All-category-filter"

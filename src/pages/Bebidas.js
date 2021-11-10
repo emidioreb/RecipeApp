@@ -1,4 +1,5 @@
 import React from 'react';
+import { useHistory } from 'react-router';
 import CategoriesDrink from '../components/CategoriesDrink';
 import Footer from '../components/Footer';
 import Header from '../components/Header';
@@ -8,6 +9,7 @@ import useDrinks from '../hooks/useDrinks';
 export default function Comidas() {
   const { drinkData } = useDrinks();
   const NUM_MAX_CARDS = 12;
+  const history = useHistory();
 
   return (
     <div>
@@ -17,9 +19,11 @@ export default function Comidas() {
         {drinkData.map((drink, index) => (
           index < NUM_MAX_CARDS && (<RecipeCard
             key={ drink.idDrink }
+            idRecipe={ drink.idDrink }
             id={ index }
             recipeTitle={ drink.strDrink }
             recipeThumb={ drink.strDrinkThumb }
+            recipe={ `${history.location.pathname}/` }
           />)
         ))}
       </section>
