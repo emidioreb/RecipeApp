@@ -9,7 +9,7 @@ export default function RecipeCard({ recipeTitle, recipeThumb, id }) {
         data-testid={ `${id}-card-img` }
         className="recipe-thumb"
         src={ recipeThumb }
-        alt="Imagem da receita"
+        alt="Imagem da receita ou ingrediente"
       />
     </div>
   );

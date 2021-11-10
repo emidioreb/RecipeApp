@@ -1,7 +1,7 @@
 import React from 'react';
 import { useHistory } from 'react-router';
 import Header from '../components/Header';
-import RecipeCard from '../components/RecipeCard';
+import IngredientCard from '../components/IngredientCard';
 import useIngredients from '../hooks/useIngredients';
 
 export default function ExplorarIngredientes() {
@@ -20,24 +20,28 @@ export default function ExplorarIngredientes() {
   default:
   }
 
+  const renderMeals = () => ingredientData.map((ingredient, index) => (
+    index < NUM_MAX_CARDS && (<IngredientCard
+      key={ ingredient.idIngredient }
+      index={ index }
+      ingredientTitle={ ingredient.strIngredient }
+      ingredientThumb={ `https://www.themealdb.com/images/ingredients/${ingredient.strIngredient}.png` }
+    />)
+  ));
+
+  const renderDrinks = () => ingredientData.map((ingredient, index) => (
+    index < NUM_MAX_CARDS && (<IngredientCard
+      key={ ingredient.strIngredient1 }
+      index={ index }
+      ingredientTitle={ ingredient.strIngredient1 }
+      ingredientThumb={ `https://www.thecocktaildb.com/images/ingredients/${ingredient.strIngredient1}-Small.png` }
+    />)
+  ));
+
   return (
     <div>
       <Header title="Explorar Ingredientes" isVisible="none" />
-      {type === 'meals' ? ingredientData.map((ingredient, index) => (
-        index < NUM_MAX_CARDS && (<RecipeCard
-          key={ ingredient.idIngredient }
-          id={ index }
-          recipeTitle={ ingredient.strIngredient }
-          recipeThumb={ `https://www.themealdb.com/images/ingredients/${ingredient.strIngredient}.png` }
-        />)
-      )) : ingredientData.map((ingredient, index) => (
-        index < NUM_MAX_CARDS && (<RecipeCard
-          key={ ingredient.strIngredient1 }
-          id={ index }
-          recipeTitle={ ingredient.strIngredient1 }
-          recipeThumb={ `https://www.thecocktaildb.com/images/ingredients/${ingredient.strIngredient1}-Small.png` }
-        />)
-      ))}
+      { type === 'meals' ? renderMeals() : renderDrinks() }
     </div>
   );
 }

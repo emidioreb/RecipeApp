@@ -3,16 +3,16 @@ import PropTypes from 'prop-types';
 import { DrinkProvider } from './useDrinks';
 import { LoginProvider } from './useLogin';
 import { MealsProvider } from './useMeals';
-import { MealIngredientsProvider } from './useIngredients';
+import { IngredientsProvider } from './useIngredients';
 
 export default function Providers({ children }) {
   return (
     <LoginProvider>
       <DrinkProvider>
         <MealsProvider>
-          <MealIngredientsProvider>
+          <IngredientsProvider>
             {children}
-          </MealIngredientsProvider>
+          </IngredientsProvider>
         </MealsProvider>
       </DrinkProvider>
     </LoginProvider>
