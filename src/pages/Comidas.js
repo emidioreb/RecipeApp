@@ -1,4 +1,5 @@
 import React from 'react';
+import CategoriesMeals from '../components/CategoriesMeals';
 import Footer from '../components/Footer';
 import Header from '../components/Header';
 import RecipeCard from '../components/RecipeCard';
@@ -10,6 +11,7 @@ export default function Comidas() {
   return (
     <div>
       <Header title="Comidas" />
+      <CategoriesMeals />
       <section className="recipe-container">
         {mealData.map((meal, index) => (
           index < NUM_MAX_CARDS && (<RecipeCard
