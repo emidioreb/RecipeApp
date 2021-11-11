@@ -10,6 +10,7 @@ export default function Detalhes({ match: { params: { recipeID } } }) {
     category,
     instructions,
     video,
+    dosages,
   } = recipe;
 
   if (loading) return '';
@@ -25,6 +26,18 @@ export default function Detalhes({ match: { params: { recipeID } } }) {
         <button type="button" data-testid="favorite-btn">Favorite</button>
       </nav>
       <article>
+        <ul>
+          {
+            dosages && dosages.map((dosage, index) => (
+              <li
+                key={ index }
+                data-testid={ `${index}-ingredient-name-and-measure` }
+              >
+                { dosage }
+              </li>
+            ))
+          }
+        </ul>
         <p data-testid="instructions">
           { instructions }
         </p>
@@ -48,6 +61,7 @@ export default function Detalhes({ match: { params: { recipeID } } }) {
           />
         }
       </section>
+      <button type="button" data-testid="start-recipe-btn">Iniciar Receita</button>
     </div>
   );
 }
