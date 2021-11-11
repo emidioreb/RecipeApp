@@ -11,16 +11,20 @@ export function MealsProvider({ children }) {
     nome: false,
     primeiraLetra: false,
   });
+  const [catMeals, setCatMeals] = useState([]);
 
   const BASE_URL = 'https://www.themealdb.com/api/json/v1/1/filter.php?';
-  let URL = 'https://www.themealdb.com/api/json/v1/1/filter.php?c=Seafood';
+  const SEARCH_URL = 'https://www.themealdb.com/api/json/v1/1/search.php?';
+  let URL = 'https://www.themealdb.com/api/json/v1/1/search.php?s=';
 
   if (mealFilter.ingrediente) {
     URL = `${BASE_URL}i=${mealFilter.searchInput}`;
   } else if (mealFilter.nome) {
-    URL = `${BASE_URL}s=${mealFilter.searchInput}`;
+    URL = `${SEARCH_URL}s=${mealFilter.searchInput}`;
   } else if (mealFilter.primeiraLetra) {
-    URL = `${BASE_URL}f=${mealFilter.searchInput}`;
+    URL = `${SEARCH_URL}f=${mealFilter.searchInput}`;
+  } else if (catMeals.length > 0) {
+    URL = `https://www.themealdb.com/api/json/v1/1/filter.php?c=${catMeals}`;
   }
 
   useEffect(() => {
@@ -36,6 +40,8 @@ export function MealsProvider({ children }) {
     mealData,
     setMealData,
     setMealFilter,
+    catMeals,
+    setCatMeals,
   };
 
   return (

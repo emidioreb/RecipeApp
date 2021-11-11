@@ -1,5 +1,8 @@
 import React, { useState } from 'react';
+import useDrinks from '../hooks/useDrinks';
 import useMeals from '../hooks/useMeals';
+
+const history = window.location.pathname;
 
 function SearchBar() {
   const [filter, setFilter] = useState({
@@ -9,9 +12,18 @@ function SearchBar() {
     primeiraLetra: false,
   });
   const { setMealFilter } = useMeals();
+  const { setDrinkFilter } = useDrinks();
 
   function submit() {
-    setMealFilter(filter);
+    switch (history) {
+    case '/comidas':
+      setMealFilter(filter);
+      break;
+    case '/bebidas':
+      setDrinkFilter(filter);
+      break;
+    default:
+    }
   }
 
   function oneLetterAllowed() {
@@ -26,9 +38,21 @@ function SearchBar() {
     }
   }
 
+  function checkMaximumLetter() {
+    const ERROR_MSG = 'Sua busca deve conter somente 1 (um) caracter';
+    if (filter.searchInput.length > 1) {
+      global.alert(ERROR_MSG);
+    }
+    setFilter({
+      ...filter,
+      searchInput: '',
+    });
+  }
+
   return (
     <form className="filter-menu">
       <input
+        className="filter-input"
         type="text"
         value={ filter.searchInput }
         data-testid="search-input"
@@ -41,8 +65,9 @@ function SearchBar() {
           oneLetterAllowed();
         } }
       />
-      <label htmlFor="ingredient">
+      <label className="filter-radio-label" htmlFor="ingredient">
         <input
+          className="filter-radio"
           type="radio"
           name="radio-filter"
           data-testid="ingredient-search-radio"
@@ -56,8 +81,9 @@ function SearchBar() {
         />
         Ingredientes
       </label>
-      <label htmlFor="name">
+      <label className="filter-radio-label" htmlFor="name">
         <input
+          className="filter-radio"
           type="radio"
           name="radio-filter"
           data-testid="name-search-radio"
@@ -71,22 +97,27 @@ function SearchBar() {
         />
         Nome
       </label>
-      <label htmlFor="word">
+      <label className="filter-radio-label" htmlFor="word">
         <input
+          className="filter-radio"
           type="radio"
           name="radio-filter"
           data-testid="first-letter-search-radio"
           value={ filter }
-          onChange={ () => setFilter({
-            ...filter,
-            ingrediente: false,
-            nome: false,
-            primeiraLetra: true,
-          }) }
+          onChange={ () => {
+            setFilter({
+              ...filter,
+              ingrediente: false,
+              nome: false,
+              primeiraLetra: true,
+            });
+            checkMaximumLetter();
+          } }
         />
         Primeira letra
       </label>
       <button
+        className="filter-btn"
         type="button"
         data-testid="exec-search-btn"
         onClick={ () => submit() }

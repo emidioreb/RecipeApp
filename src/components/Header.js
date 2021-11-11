@@ -13,27 +13,25 @@ export default function Header({ title, isVisible }) {
     <header className="header">
       <div className="header-menu">
         <button
+          className="form-btn"
           onClick={ () => history.push('/perfil') }
           type="button"
           data-testid="profile-top-btn"
         >
-          <img src={ profileIcon } alt="Profile icon" />
+          <img className="svg-color" src={ profileIcon } alt="Profile icon" />
         </button>
         <h1 data-testid="page-title">{title}</h1>
         <button
+          className="form-btn"
           style={ { display: isVisible } }
           onClick={ () => setIsSearchBarActive(!isSearchBarActive) }
           type="button"
           data-testid="search-top-btn"
         >
-          <img src={ searchIcon } alt="Search icon" />
+          <img className="svg-color" src={ searchIcon } alt="Search icon" />
         </button>
       </div>
-      {isSearchBarActive && (
-        <div>
-          <SearchBar />
-        </div>
-      )}
+      {isSearchBarActive && <SearchBar />}
     </header>
   );
 }

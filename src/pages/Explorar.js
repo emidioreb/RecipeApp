@@ -9,25 +9,25 @@ export default function Explorar() {
     <>
       <Header title="Explorar" isVisible="none" />
       <div className="explore-container">
-        <Link to="/explorar/bebidas">
+        <Link to="/explorar/comidas">
           <button
             className="explore-btn"
             type="button"
             data-testid="explore-food"
           >
-            <img src={ mealIcon } alt="ícone de Comidas" />
-            <p className="button-text">Explorar Bebidas</p>
+            <img className="svg-color" src={ mealIcon } alt="ícone de Comidas" />
+            <p className="button-text">Explorar Comidas</p>
           </button>
         </Link>
-        <Link to="/explorar/comidas">
+        <Link to="/explorar/bebidas">
           <button
             className="explore-btn"
             type="button"
             data-testid="explore-drinks"
           >
-            <img src={ drinkIcon } alt="ícone de Bebidas" />
+            <img className="svg-color" src={ drinkIcon } alt="ícone de Bebidas" />
             <p className="button-text">
-              Explorar Comidas
+              Explorar Bebidas
             </p>
           </button>
         </Link>

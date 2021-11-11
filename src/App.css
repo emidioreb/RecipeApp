@@ -1,18 +1,35 @@
 * {
+  border: none;
   box-sizing: border-box;
   margin: 0;
   padding: 0;
   text-decoration: none;
 }
 
+:root {
+
+  --main-color: #292841;
+
+  --secondary-color: #1c1b29;
+
+  --font-color: white;
+
+  --warning-color: #e7366b;
+
+  --button-color: #dbe7ff;
+
+  --grey-scale: #b5b6ba;
+
+}
+
 body {
-  background: #0fa36b;
+  background: var(--main-color);
 }
 
 .meals {
   align-items: center;
-  background: #0fa36b;
-  color: #464646;
+  background: var(--main-color);
+  color: var(--grey-scale);
   display: flex;
   flex-direction: column;
   font-family: sans-serif;
@@ -103,22 +120,33 @@ body {
 
 .form-btn {
   align-self: center;
-  background: #14d38a;
+  background: var(--secondary-color);
   border-radius: 8px;
+  color: var(--font-color);
   margin-top: 1rem;
   padding: 0.6rem;
   transition: 0.2s;
   width : 38%;
 }
 
+header .form-btn {
+  width: auto;
+}
+
+.svg-color {
+  filter: invert(1);
+  margin-bottom: 0.3rem;
+  width: 20px;
+}
+
 .form-btn:not( [ disabled ] ):hover {
-  filter: brightness(1.2) drop-shadow(3px 3px 6px #14d38a);
+  filter: brightness(1.5) drop-shadow(3px 3px 6px var(--secondary-color));
 }
 
 .footer {
   bottom: 0;
   display: flex;
-  height: 20vh;
+  height: 8vh;
   left: 0;
   position: fixed;
   width: 100vw;
@@ -126,16 +154,35 @@ body {
 
 .footer-container {
   align-items: center;
-  background: #14d38a;
+  background: var(--secondary-color);
   display: flex;
   justify-content: space-around;
   width: 100%;
 }
 
+.footer-btn {
+  align-items: center;
+  background: var(--secondary-color);
+  border-radius: 8px;
+  color: var(--font-color);
+  display: flex;
+  flex-direction: column;
+  font-size: 0.7rem;
+  justify-content: center;
+  transition: 0.2s;
+  width: auto;
+}
+
+.footer-btn:not( [ disabled ] ):hover {
+  filter: brightness(1.5) drop-shadow(3px 3px 6px var(--secondary-color));
+}
+
 .header {
+  color: var(--font-color);
   display: flex;
   flex-direction: column;
   justify-content: space-around;
+  margin-top: 1rem;
 }
 
 .header-menu {
@@ -145,8 +192,47 @@ body {
 
 .filter-menu {
   display: flex;
-  justify-content: center;
+  justify-content: space-around;
   margin-top: 1rem;
+}
+
+.filter-input {
+  background-color: #353441;
+  border: 1px solid white;
+  border-radius: 3px;
+  color: white;
+  filter: brightness(1.5);
+  text-align: center;
+}
+
+.filter-radio {
+  align-items: center;
+  margin-right: 0.3rem;
+  margin-top: 0.1rem;
+}
+
+.filter-radio-label {
+  align-items: center;
+  display: flex;
+  font-size: 0.8rem;
+}
+
+.filter-btn {
+  align-items: center;
+  background: var(--secondary-color);
+  border-radius: 8px;
+  color: var(--font-color);
+  display: flex;
+  flex-direction: column;
+  font-size: 0.7rem;
+  justify-content: center;
+  padding: 0.5rem;
+  transition: 0.2s;
+  width: auto;
+}
+
+.filter-btn:not( [ disabled ] ):hover {
+  filter: brightness(1.5) drop-shadow(3px 3px 6px var(--secondary-color));
 }
 
 .explore-container {
@@ -160,12 +246,15 @@ body {
 
 .explore-btn {
   align-items: center;
+  background: var(--secondary-color);
   border-radius: 8px;
+  color: var(--font-color);
   display: flex;
   flex-direction: column;
   justify-content: center;
   margin-top: 1rem;
   padding: 3rem;
+  transition: 0.2s;
 }
 
 .button-text {
@@ -178,19 +267,41 @@ body {
 
 .recipe-container {
   display: flex;
-  flex-flow: row wrap;
+  flex-direction: column;
   margin-top: 2rem;
-  width: 96vw;
 }
 
 .recipe-card {
   align-items: center;
+  color: var(--font-color);
   display: flex;
   flex-direction: column;
   justify-content: center;
-  padding: 1rem;
+  margin-bottom: 2rem;
 }
 
 .recipe-card h4 {
   margin-bottom: 0.5rem;
+}
+
+.categories-container {
+  display: flex;
+  flex-flow: row wrap;
+  margin-top: 1rem;
+}
+
+.categories-button {
+  align-self: center;
+  background: var(--secondary-color);
+  border-radius: 8px;
+  color: var(--font-color);
+  margin: auto;
+  margin-top: 1rem;
+  min-height: 2rem;
+  transition: 0.2s;
+  width : 28%;
+}
+
+.categories-button:not( [ disabled ] ):hover {
+  filter: brightness(1.5) drop-shadow(3px 3px 6px var(--secondary-color));
 }
