@@ -62,7 +62,7 @@ function useRecipeDetails(id) {
     }
     fetchData();
     setLoading(false);
-  }, [getTypeAndURLInfo]);
+  }, []);
 
   return {
     recipe,
