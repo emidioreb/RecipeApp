@@ -46,6 +46,7 @@ function SearchBar() {
     setFilter({
       ...filter,
       searchInput: '',
+      primeiraLetra: true,
     });
   }
 

@@ -17,19 +17,41 @@ export default function Detalhes({ match: { params: { recipeID } } }) {
   return (
     <div>
       <section>
-        <img src={ image } alt="Foto de " data-testid="recipe-photo" />
-        <h1 data-testid="recipe-title">{ title }</h1>
-        <h2 data-testid="recipe-category">{ category }</h2>
+        <div className="recipe-image-container">
+          <img
+            className="recipe-image"
+            src={ image }
+            alt="Foto da receita"
+            data-testid="recipe-photo"
+          />
+        </div>
+        <div className="recipe-container">
+          <h2 className="recipe-title" data-testid="recipe-title">{ title }</h2>
+          <h3 className="recipe-title" data-testid="recipe-category">{ category }</h3>
+        </div>
       </section>
-      <nav>
-        <button type="button" data-testid="share-btn">Share</button>
-        <button type="button" data-testid="favorite-btn">Favorite</button>
+      <nav className="recipe-nav">
+        <button
+          className="categories-button"
+          type="button"
+          data-testid="share-btn"
+        >
+          Share
+        </button>
+        <button
+          className="categories-button"
+          type="button"
+          data-testid="favorite-btn"
+        >
+          Favorite
+        </button>
       </nav>
-      <article>
+      <article className="recipe-container">
         <ul>
           {
             dosages && dosages.map((dosage, index) => (
               <li
+                className="recipe-content"
                 key={ index }
                 data-testid={ `${index}-ingredient-name-and-measure` }
               >
@@ -38,16 +60,19 @@ export default function Detalhes({ match: { params: { recipeID } } }) {
             ))
           }
         </ul>
-        <p data-testid="instructions">
+        <div className="spacer" />
+        <p className="recipe-content" data-testid="instructions">
           { instructions }
         </p>
       </article>
-      <section>
+      <div className="spacer" />
+      <section className="video-container">
         {
           video && <iframe
-            width="560"
-            height="315"
-            src={ `https://www.youtube.com/embed/${video}` }
+            className="i-test"
+            width="96%"
+            height="260px"
+            src={ `https://www.youtube.com/embed/${video}?controls=0` }
             title="YouTube video player"
             frameBorder="0"
             allow="accelerometer;
@@ -61,7 +86,16 @@ export default function Detalhes({ match: { params: { recipeID } } }) {
           />
         }
       </section>
-      <button type="button" data-testid="start-recipe-btn">Iniciar Receita</button>
+      <div className="container">
+        <button
+          className="categories-button-last"
+          type="button"
+          data-testid="start-recipe-btn"
+        >
+          Iniciar Receita
+        </button>
+
+      </div>
     </div>
   );
 }

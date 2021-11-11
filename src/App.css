@@ -269,6 +269,7 @@ header .form-btn {
   display: flex;
   flex-direction: column;
   margin-top: 2rem;
+  padding: 1rem;
 }
 
 .recipe-card {
@@ -295,6 +296,7 @@ header .form-btn {
   background: var(--secondary-color);
   border-radius: 8px;
   color: var(--font-color);
+  font-size: 0.7rem;
   margin: auto;
   margin-top: 1rem;
   min-height: 2rem;
@@ -302,6 +304,68 @@ header .form-btn {
   width : 28%;
 }
 
+.categories-button-last {
+  align-self: center;
+  background: var(--secondary-color);
+  border-radius: 8px;
+  color: var(--font-color);
+  font-size: 0.7rem;
+  margin: auto;
+  margin-bottom: 2rem;
+  margin-top: 1rem;
+  min-height: 2rem;
+  transition: 0.2s;
+  width : 28%;
+
+}
+
 .categories-button:not( [ disabled ] ):hover {
   filter: brightness(1.5) drop-shadow(3px 3px 6px var(--secondary-color));
+}
+
+.recipe-nav {
+  display: flex;
+  margin-bottom: 1rem;
+}
+
+.recipe-image-container {
+  display: inline-block;
+  overflow: hidden;
+}
+
+.recipe-image {
+  width: 100%;
+}
+
+.recipe-title {
+  color: var(--font-color);
+}
+
+.recipe-content {
+  color: var(--font-color);
+  font-size: 0.8rem;
+  list-style: none;
+  margin-bottom: 0.3rem;
+}
+
+.spacer {
+  border-bottom: 1px solid white;
+  content: '';
+  margin: 3rem 1rem;
+}
+
+.video-container {
+  display: flex;
+  justify-content: center;
+  width: 100%;
+}
+
+.container {
+  display: flex;
+  justify-content: center;
+  width: 100%;
+}
+
+.i-test {
+  border-radius: 10px;
 }
