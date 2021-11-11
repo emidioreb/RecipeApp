@@ -17,6 +17,7 @@ export default function Detalhes({ match: { params: { recipeID } } }) {
   return (
     <div>
       <section>
+        { console.log(recipeID)}
         <img src={ image } alt="Foto de " data-testid="recipe-photo" />
         <h1 data-testid="recipe-title">{ title }</h1>
         <h2 data-testid="recipe-category">{ category }</h2>

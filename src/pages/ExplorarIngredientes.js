@@ -1,5 +1,5 @@
 import React from 'react';
-import { useHistory } from 'react-router';
+import { useLocation } from 'react-router';
 import Header from '../components/Header';
 import IngredientCard from '../components/IngredientCard';
 import useIngredients from '../hooks/useIngredients';
@@ -8,7 +8,7 @@ export default function ExplorarIngredientes() {
   const { ingredientData, setIngredientRequestURL, setType, type } = useIngredients();
   const NUM_MAX_CARDS = 12;
 
-  switch (useHistory().location.pathname) {
+  switch (useLocation().pathname) {
   case '/explorar/comidas/ingredientes':
     setIngredientRequestURL('https://www.themealdb.com/api/json/v1/1/list.php?i=list');
     setType('meals');
