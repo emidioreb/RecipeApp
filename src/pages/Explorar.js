@@ -7,7 +7,7 @@ import mealIcon from '../images/mealIcon.svg';
 export default function Explorar() {
   return (
     <>
-      <Header title="Explorar" isVisible="none" />
+      <Header title="Explorar" />
       <div className="explore-container">
         <Link to="/explorar/comidas">
           <button

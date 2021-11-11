@@ -5,7 +5,7 @@ import profileIcon from '../images/profileIcon.svg';
 import searchIcon from '../images/searchIcon.svg';
 import SearchBar from './SearchBar';
 
-export default function Header({ title, isVisible }) {
+export default function Header({ title, searchBtn }) {
   const [isSearchBarActive, setIsSearchBarActive] = useState(false);
   const history = useHistory();
 
@@ -17,19 +17,23 @@ export default function Header({ title, isVisible }) {
           onClick={ () => history.push('/perfil') }
           type="button"
           data-testid="profile-top-btn"
+          src="profileIcon"
         >
           <img className="svg-color" src={ profileIcon } alt="Profile icon" />
         </button>
         <h1 data-testid="page-title">{title}</h1>
-        <button
-          className="form-btn"
-          style={ { display: isVisible } }
-          onClick={ () => setIsSearchBarActive(!isSearchBarActive) }
-          type="button"
-          data-testid="search-top-btn"
-        >
-          <img className="svg-color" src={ searchIcon } alt="Search icon" />
-        </button>
+        {searchBtn
+        && (
+          <button
+            className="form-btn"
+            onClick={ () => setIsSearchBarActive(!isSearchBarActive) }
+            type="button"
+            data-testid="search-top-btn"
+            src="searchIcon"
+          >
+            <img className="svg-color" src={ searchIcon } alt="Search icon" />
+          </button>
+        )}
       </div>
       {isSearchBarActive && <SearchBar />}
     </header>
@@ -38,5 +42,5 @@ export default function Header({ title, isVisible }) {
 
 Header.propTypes = {
   title: PropTypes.string.isRequired,
-  isVisible: PropTypes.string.isRequired,
+  searchBtn: PropTypes.string.isRequired,
 };

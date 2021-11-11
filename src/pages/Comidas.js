@@ -15,7 +15,7 @@ export default function Comidas() {
   }
   return (
     <div>
-      <Header title="Comidas" />
+      <Header title="Comidas" searchBtn />
       <CategoriesMeals />
       <section className="recipe-container">
         {mealData.map((meal, index) => (
