@@ -1,30 +1,24 @@
 import { useState, useEffect } from 'react';
-import { useHistory } from 'react-router';
+import { useLocation } from 'react-router';
 
 function useRecipeDetails(id) {
+  const { pathname } = useLocation();
   const [loading, setLoading] = useState(true);
   const [recipe, setRecipe] = useState({});
 
-  let typeAndInfo = {};
-  const PATH = useHistory().location.pathname;
-
-  switch (PATH) {
-  case (PATH.includes('comida')):
-    typeAndInfo = {
-      URL: `https://www.themealdb.com/api/json/v1/1/lookup.php?i=${id}`,
-      type: 'meals',
-      onlyType: 'Meal',
-    };
-    break;
-  case (PATH.includes('bebida')):
-    typeAndInfo = {
+  function getTypeAndURLInfo() {
+    if (pathname.includes('comida')) {
+      return {
+        URL: `https://www.themealdb.com/api/json/v1/1/lookup.php?i=${id}`,
+        type: 'meals',
+        onlyType: 'Meal',
+      };
+    }
+    return {
       URL: `https://www.thecocktaildb.com/api/json/v1/1/lookup.php?i=${id}`,
       type: 'drinks',
       onlyType: 'Drink',
     };
-    break;
-  default:
-    break;
   }
 
   function treatVideoID(link) {
@@ -51,7 +45,7 @@ function useRecipeDetails(id) {
   }
 
   useEffect(() => {
-    const { URL, type, onlyType } = typeAndInfo;
+    const { URL, type, onlyType } = getTypeAndURLInfo();
     async function fetchData() {
       const response = await fetch(URL);
       const responseData = await response.json();
@@ -68,7 +62,7 @@ function useRecipeDetails(id) {
     }
     fetchData();
     setLoading(false);
-  }, [typeAndInfo]);
+  }, []);
 
   return {
     recipe,
