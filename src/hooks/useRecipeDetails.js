@@ -30,17 +30,33 @@ function useRecipeDetails(id) {
     return undefined;
   }
 
+  function createMeasureAndIngredient(object) {
+    const ingredients = Object.entries(object)
+      .filter((element) => element[0].includes('strIngredient'));
+    const measures = Object.entries(object)
+      .filter((element) => element[0].includes('strMeasure'));
+
+    return ingredients.reduce((acc, curr, index) => {
+      if (curr[1]) {
+        return [...acc, `${measures[index][1]} ${curr[1]}`];
+      }
+      return acc;
+    }, []);
+  }
+
   useEffect(() => {
     const { URL, type, onlyType } = getTypeAndURLInfo();
     async function fetchData() {
       const response = await fetch(URL);
-      const recipeObject = await response.json();
+      const responseData = await response.json();
+      const recipeObject = responseData[type][0];
       const data = {
-        image: recipeObject[type][0][`str${onlyType}Thumb`],
-        title: recipeObject[type][0][`str${onlyType}`],
-        category: recipeObject[type][0].strCategory,
-        instructions: recipeObject[type][0].strInstructions,
-        video: treatVideoID(recipeObject[type][0].strYoutube),
+        image: recipeObject[`str${onlyType}Thumb`],
+        title: recipeObject[`str${onlyType}`],
+        category: recipeObject.strCategory,
+        instructions: recipeObject.strInstructions,
+        video: treatVideoID(recipeObject.strYoutube),
+        dosages: createMeasureAndIngredient(recipeObject),
       };
       setRecipe(data);
     }
