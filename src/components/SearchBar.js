@@ -52,6 +52,7 @@ function SearchBar() {
   return (
     <form className="filter-menu">
       <input
+        className="filter-input"
         type="text"
         value={ filter.searchInput }
         data-testid="search-input"
@@ -64,8 +65,9 @@ function SearchBar() {
           oneLetterAllowed();
         } }
       />
-      <label htmlFor="ingredient">
+      <label className="filter-radio-label" htmlFor="ingredient">
         <input
+          className="filter-radio"
           type="radio"
           name="radio-filter"
           data-testid="ingredient-search-radio"
@@ -79,8 +81,9 @@ function SearchBar() {
         />
         Ingredientes
       </label>
-      <label htmlFor="name">
+      <label className="filter-radio-label" htmlFor="name">
         <input
+          className="filter-radio"
           type="radio"
           name="radio-filter"
           data-testid="name-search-radio"
@@ -94,8 +97,9 @@ function SearchBar() {
         />
         Nome
       </label>
-      <label htmlFor="word">
+      <label className="filter-radio-label" htmlFor="word">
         <input
+          className="filter-radio"
           type="radio"
           name="radio-filter"
           data-testid="first-letter-search-radio"
@@ -113,6 +117,7 @@ function SearchBar() {
         Primeira letra
       </label>
       <button
+        className="filter-btn"
         type="button"
         data-testid="exec-search-btn"
         onClick={ () => submit() }
