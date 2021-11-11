@@ -21,10 +21,10 @@ export default function Routes() {
       <Route exact path="/" component={ Login } />
       <Route exact path="/comidas" component={ Comidas } />
       <Route exact path="/bebidas" component={ Bebidas } />
-      <Route exact path="/comidas/:id-da-receita" component={ Detalhes } />
-      <Route exact path="/bebidas/:id-da-receita" component={ Detalhes } />
-      <Route path="/comidas/:id-da-receita/in-progress" component={ Processo } />
-      <Route path="/bebidas/:id-da-receita/in-progress" component={ Processo } />
+      <Route exact path="/comidas/:recipeID" component={ Detalhes } />
+      <Route exact path="/bebidas/:recipeID" component={ Detalhes } />
+      <Route path="/comidas/:recipeID/in-progress" component={ Processo } />
+      <Route path="/bebidas/:recipeID/in-progress" component={ Processo } />
       <Route exact path="/explorar" component={ Explorar } />
       <Route exact path="/explorar/comidas" component={ ExplorarComidas } />
       <Route exact path="/explorar/bebidas" component={ ExplorarBebidas } />
