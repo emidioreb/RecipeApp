@@ -57,6 +57,7 @@ function useRecipeDetails(id) {
         instructions: recipeObject.strInstructions,
         video: treatVideoID(recipeObject.strYoutube),
         dosages: createMeasureAndIngredient(recipeObject),
+        type,
       };
       setRecipe(data);
     }
