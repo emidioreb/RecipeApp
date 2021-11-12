@@ -363,8 +363,8 @@ header .form-btn {
 .carousel-container {
   display: flex;
   flex-direction: column;
-  width: 100vw;
   overflow-x: auto;
+  width: 100vw;
 }
 
 .carousel-container div {
@@ -374,19 +374,19 @@ header .form-btn {
 }
 
 .carousel-container div .carousel-card {
-  color: white;
+  align-items: center;
+  background-blend-mode: darken;
+  background-color: #00000043;
   background-repeat: no-repeat;
   background-size: cover;
-  background-color: #00000043;
   border-radius: 30px;
+  color: white;
   flex: none;
-  height: 300px;
-  width: 50%;
-  margin: 1rem 0.5rem;
   flex-direction: column;
-  align-items: center;
+  height: 300px;
   justify-content: center;
-  background-blend-mode: darken;
+  margin: 1rem 0.5rem;
+  width: 50%;
 }
 
 .carousel-container div .carousel-card:hover {
