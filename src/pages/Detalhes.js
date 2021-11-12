@@ -1,8 +1,15 @@
-import React from 'react';
+import React, { useState, useEffect } from 'react';
 import PropTypes from 'prop-types';
 import useRecipeDetails from '../hooks/useRecipeDetails';
+import useMeals from '../hooks/useMeals';
+import useDrinks from '../hooks/useDrinks';
+import onlyNumberItems from '../helpers/onlyNumberItems';
 
 export default function Detalhes({ match: { params: { recipeID } } }) {
+  const { mealData } = useMeals();
+  const { drinkData } = useDrinks();
+  const [carouselData, setCarouselData] = useState([]);
+  const [onlyType, setOnlyType] = useState('');
   const { recipe, loading } = useRecipeDetails(recipeID);
   const {
     image,
@@ -11,7 +18,19 @@ export default function Detalhes({ match: { params: { recipeID } } }) {
     instructions,
     video,
     dosages,
+    type,
   } = recipe;
+
+  useEffect(() => {
+    const CAROUSEL_ITEMS_LIMIT = 6;
+    if (type === 'drinks') {
+      setOnlyType('Meal');
+      setCarouselData(onlyNumberItems(mealData, CAROUSEL_ITEMS_LIMIT));
+    } else {
+      setOnlyType('Drink');
+      setCarouselData(onlyNumberItems(drinkData, CAROUSEL_ITEMS_LIMIT));
+    }
+  }, [drinkData, mealData, type, setCarouselData]);
 
   if (loading) return '';
   return (
@@ -86,6 +105,30 @@ export default function Detalhes({ match: { params: { recipeID } } }) {
           />
         }
       </section>
+      <section className="carousel-container">
+        <div>
+          {
+            carouselData
+              .map((suggestion, index) => (
+                <div
+                  key={ index }
+                  className="carousel-card"
+                  data-testid={ `${index}-recomendation-card` }
+                  style={ {
+                    backgroundImage: `url(${suggestion[`str${onlyType}Thumb`]})`,
+                  } }
+                >
+                  <h4
+                    data-testid={ `${index}-recomendation-title` }
+                  >
+                    { suggestion[`str${onlyType}`] }
+                  </h4>
+                  <h5>{ suggestion.strCategory }</h5>
+                </div>
+              ))
+          }
+        </div>
+      </section>
       <div className="container">
         <button
           className="categories-button-last"
@@ -94,7 +137,6 @@ export default function Detalhes({ match: { params: { recipeID } } }) {
         >
           Iniciar Receita
         </button>
-
       </div>
     </div>
   );
