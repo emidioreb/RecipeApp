@@ -6,21 +6,6 @@ function useRecipeDetails(id) {
   const [loading, setLoading] = useState(true);
   const [recipe, setRecipe] = useState({});
 
-  function getTypeAndURLInfo() {
-    if (pathname.includes('comida')) {
-      return {
-        URL: `https://www.themealdb.com/api/json/v1/1/lookup.php?i=${id}`,
-        type: 'meals',
-        onlyType: 'Meal',
-      };
-    }
-    return {
-      URL: `https://www.thecocktaildb.com/api/json/v1/1/lookup.php?i=${id}`,
-      type: 'drinks',
-      onlyType: 'Drink',
-    };
-  }
-
   function treatVideoID(link) {
     const VIDEO_ID_CHARACTERS_NUMBER = -11;
     if (link) {
@@ -45,6 +30,20 @@ function useRecipeDetails(id) {
   }
 
   useEffect(() => {
+    function getTypeAndURLInfo() {
+      if (pathname.includes('comida')) {
+        return {
+          URL: `https://www.themealdb.com/api/json/v1/1/lookup.php?i=${id}`,
+          type: 'meals',
+          onlyType: 'Meal',
+        };
+      }
+      return {
+        URL: `https://www.thecocktaildb.com/api/json/v1/1/lookup.php?i=${id}`,
+        type: 'drinks',
+        onlyType: 'Drink',
+      };
+    }
     const { URL, type, onlyType } = getTypeAndURLInfo();
     async function fetchData() {
       const response = await fetch(URL);
@@ -62,7 +61,7 @@ function useRecipeDetails(id) {
     }
     fetchData();
     setLoading(false);
-  }, []);
+  }, [id, pathname]);
 
   return {
     recipe,
