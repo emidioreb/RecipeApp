@@ -12,7 +12,7 @@ export default function Perfil() {
 
   return (
     <>
-      <Header title="Perfil" isVisible="none" />
+      <Header title="Perfil" />
       <div className="explore-container">
         <h3 data-testid="profile-email">{mail}</h3>
         <Link to="/receitas-feitas">

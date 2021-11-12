@@ -40,7 +40,7 @@ export default function ExplorarIngredientes() {
 
   return (
     <div>
-      <Header title="Explorar Ingredientes" isVisible="none" />
+      <Header title="Explorar Ingredientes" />
       { type === 'meals' ? renderMeals() : renderDrinks() }
     </div>
   );

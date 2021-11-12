@@ -5,7 +5,7 @@ import Header from '../components/Header';
 export default function ExplorarComidas() {
   return (
     <div>
-      <Header title="Explorar comidas" isVisible="none" />
+      <Header title="Explorar Comidas" />
       <section className="explore-container">
         <Link to="/explorar/comidas/ingredientes">
           <button
