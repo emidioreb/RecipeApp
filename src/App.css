@@ -360,6 +360,39 @@ header .form-btn {
   width: 100%;
 }
 
+.carousel-container {
+  display: flex;
+  flex-direction: column;
+  width: 100vw;
+  overflow-x: auto;
+}
+
+.carousel-container div {
+  display: flex;
+  flex-direction: row;
+  width: 100vw;
+}
+
+.carousel-container div .carousel-card {
+  color: white;
+  background-repeat: no-repeat;
+  background-size: cover;
+  background-color: #00000043;
+  border-radius: 30px;
+  flex: none;
+  height: 300px;
+  width: 50%;
+  margin: 1rem 0.5rem;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  background-blend-mode: darken;
+}
+
+.carousel-container div .carousel-card:hover {
+  background-blend-mode: normal;
+}
+
 .container {
   display: flex;
   justify-content: center;
