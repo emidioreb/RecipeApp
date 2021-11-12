@@ -30,7 +30,12 @@ export function DrinkProvider({ children }) {
     const fetchApi = async () => {
       const response = await fetch(URL);
       const { drinks } = await response.json();
-      setDrinkData(drinks);
+      const msgerror = 'Sinto muito, não encontramos nenhuma receita para esses filtros.';
+      if (drinks === null) {
+        global.alert(msgerror);
+      } else {
+        setDrinkData(drinks);
+      }
     };
     fetchApi();
   }, [URL]);
