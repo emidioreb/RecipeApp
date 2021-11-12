@@ -10,7 +10,7 @@ export default function Footer() {
       <div className="footer-container">
         <Link to="/bebidas">
           <button
-            className="form-btn"
+            className="footer-btn"
             type="button"
             data-testid="drinks-bottom-btn"
           >
@@ -20,7 +20,7 @@ export default function Footer() {
         </Link>
         <Link to="/explorar">
           <button
-            className="form-btn"
+            className="footer-btn"
             type="button"
             data-testid="explore-bottom-btn"
           >
@@ -30,7 +30,7 @@ export default function Footer() {
         </Link>
         <Link to="/comidas">
           <button
-            className="form-btn"
+            className="footer-btn"
             type="button"
             data-testid="food-bottom-btn"
           >

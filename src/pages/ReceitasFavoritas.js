@@ -4,7 +4,7 @@ import Header from '../components/Header';
 export default function ReceitasFavoritas() {
   return (
     <div>
-      <Header title="Receitas Favoritas" isVisible="none" />
+      <Header title="Receitas Favoritas" />
     </div>
   );
 }

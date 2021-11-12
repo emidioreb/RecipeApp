@@ -19,7 +19,7 @@ export default function CategoriesDrink() {
   return (
     <div className="categories-container">
       <button
-        className="form-btn category-drink"
+        className="categories-button"
         type="button"
         onClick={ () => setCatDrinks([]) }
         data-testid="All-category-filter"
@@ -29,7 +29,7 @@ export default function CategoriesDrink() {
       {categoryDrink.map((cat, index) => (
         index < NUM_MAX_BUTTONS && (
           <button
-            className="form-btn category-drink"
+            className="categories-button"
             data-testid={ `${cat.strCategory}-category-filter` }
             type="button"
             key={ cat.strCategory }
