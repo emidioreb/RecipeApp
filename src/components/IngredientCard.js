@@ -37,6 +37,8 @@ export default function IngredientCard({
     history.push('/bebidas');
   };
 
+  console.log(ingredientThumb);
+
   return (
     <button
       type="button"
