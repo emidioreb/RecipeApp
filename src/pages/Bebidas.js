@@ -12,24 +12,25 @@ export default function Bebidas() {
   const NUM_MAX_CARDS = 12;
   if (drinkData.length === 1) {
     push(`/bebidas/${drinkData[0].idDrink}`);
+  } else {
+    return (
+      <div>
+        <Header title="Bebidas" searchBtn />
+        <CategoriesDrink />
+        <section className="recipe-container">
+          {drinkData.map((drink, index) => (
+            index < NUM_MAX_CARDS && (<RecipeCard
+              key={ drink.idDrink }
+              idRecipe={ drink.idDrink }
+              id={ index }
+              recipeTitle={ drink.strDrink }
+              recipeThumb={ drink.strDrinkThumb }
+              recipe={ `${location.pathname}/` }
+            />)
+          ))}
+        </section>
+        <Footer />
+      </div>
+    );
   }
-  return (
-    <div>
-      <Header title="Bebidas" searchBtn />
-      <CategoriesDrink />
-      <section className="recipe-container">
-        {drinkData.map((drink, index) => (
-          index < NUM_MAX_CARDS && (<RecipeCard
-            key={ drink.idDrink }
-            idRecipe={ drink.idDrink }
-            id={ index }
-            recipeTitle={ drink.strDrink }
-            recipeThumb={ drink.strDrinkThumb }
-            recipe={ `${location.pathname}/` }
-          />)
-        ))}
-      </section>
-      <Footer />
-    </div>
-  );
 }

@@ -274,6 +274,7 @@ header .form-btn {
 
 .recipe-card {
   align-items: center;
+  background-color: var(--background-color);
   color: var(--font-color);
   display: flex;
   flex-direction: column;
@@ -372,4 +373,19 @@ header .form-btn {
 
 .user-email {
   color: var(--font-color);
+  margin-bottom: 1rem;
+}
+
+.not-found {
+  align-items: center;
+  display: flex;
+  flex-direction: column;
+  height: 100vh;
+  justify-content: center;
+  width: 100vw;
+}
+
+.link {
+  color: inherit;
+  text-decoration: underline;
 }
