@@ -6,7 +6,7 @@ export default function Progresso() {
     title: '',
     category: '',
     ingredients: {},
-    instrutions: '',
+    instructions: '',
   });
   return (
     <div>
@@ -19,7 +19,6 @@ export default function Progresso() {
       <h3 data-testid="recipe-category">
         {recipe.category}
       </h3>
-      
       <button type="button" data-testid="finish-recipe-btn">Finalizar receita</button>
     </div>
   );
