@@ -13,10 +13,11 @@ import ExplorarIngredientes from './pages/ExplorarIngredientes';
 import Area from './pages/Area';
 import Detalhes from './pages/Detalhes';
 import Progresso from './pages/Progresso';
+import NotFound from './pages/NotFound';
 
 export default function Routes() {
   return (
-    <div>
+    <>
       <Route exact path="/" component={ Login } />
       <Route exact path="/comidas" component={ Comidas } />
       <Route exact path="/bebidas" component={ Bebidas } />
@@ -36,9 +37,10 @@ export default function Routes() {
         component={ ExplorarIngredientes }
       />
       <Route path="/explorar/comidas/area" component={ Area } />
+      <Route path="/explorar/bebidas/area" component={ NotFound } />
       <Route path="/perfil" component={ Perfil } />
       <Route path="/receitas-feitas" component={ ReceitasFeitas } />
       <Route path="/receitas-favoritas" component={ ReceitasFavoritas } />
-    </div>
+    </>
   );
 }

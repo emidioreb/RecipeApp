@@ -1,12 +1,13 @@
 import React, { useState } from 'react';
 
 export default function Progresso() {
-  const [recipe, setRecipe] = useState({
+  const [recipe, setRecipe] = useState('');
+  setRecipe({
     photo: '',
     title: '',
     category: '',
     ingredients: {},
-    instrutions: '',
+    instructions: '',
   });
   return (
     <div>
@@ -19,7 +20,6 @@ export default function Progresso() {
       <h3 data-testid="recipe-category">
         {recipe.category}
       </h3>
-      
       <button type="button" data-testid="finish-recipe-btn">Finalizar receita</button>
     </div>
   );
