@@ -1,7 +1,8 @@
 import React, { useState } from 'react';
 
 export default function Progresso() {
-  const [recipe, setRecipe] = useState({
+  const [recipe, setRecipe] = useState('');
+  setRecipe({
     photo: '',
     title: '',
     category: '',
