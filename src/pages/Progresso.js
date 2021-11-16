@@ -51,7 +51,7 @@ export default function Progresso({ match: { params: { recipeID } } }) {
       </form>
       <h4 data-testid="instructions">{instructions}</h4>
       <button
-        onClick={ () => { doneRecipes(...getDoneRecipes, localStorageDoneRecipes); } }
+        onClick={ () => { doneRecipes(...getDoneRecipes); } }
         type="button"
         data-testid="finish-recipe-btn"
       >
