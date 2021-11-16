@@ -262,7 +262,11 @@ header .form-btn {
 }
 
 .recipe-thumb {
-  max-width: 30%;
+  max-width: 80%;
+}
+
+.recipe-thumb-ingredient {
+  width: 300px;
 }
 
 .recipe-container {

@@ -53,7 +53,7 @@ export default function IngredientCard({
       <h4 data-testid={ `${index}-card-name` }>{ingredientTitle}</h4>
       <img
         data-testid={ `${index}-card-img` }
-        className="recipe-thumb"
+        className="recipe-thumb-ingredient"
         src={ ingredientThumb }
         alt="Imagem da receita ou ingrediente"
       />
