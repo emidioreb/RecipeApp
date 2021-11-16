@@ -3,9 +3,10 @@ import { useHistory } from 'react-router';
 import Header from '../components/Header';
 import IngredientCard from '../components/IngredientCard';
 import useIngredients from '../hooks/useIngredients';
+import ingredients from '../mocks/ingredients';
 
 export default function ExplorarIngredientes() {
-  const { ingredientData, setIngredientRequestURL, setType, type } = useIngredients();
+  const { setIngredientRequestURL, setType, type } = useIngredients();
   const NUM_MAX_CARDS = 12;
 
   switch (useHistory().location.pathname) {
@@ -24,24 +25,24 @@ export default function ExplorarIngredientes() {
   default:
   }
 
-  const renderMeals = () => ingredientData.map(
+  const renderMeals = () => ingredients.meals.map(
     (ingredient, index) => index < NUM_MAX_CARDS && (
       <IngredientCard
         key={ ingredient.idIngredient }
         index={ index }
         ingredientTitle={ ingredient.strIngredient }
-        ingredientThumb={ `https://www.themealdb.com/images/ingredients/${ingredient.strIngredient}.png` }
+        ingredientThumb={ ingredient.thumbIngredient }
       />
     ),
   );
 
-  const renderDrinks = () => ingredientData.map(
+  const renderDrinks = () => ingredients.drinks.map(
     (ingredient, index) => index < NUM_MAX_CARDS && (
       <IngredientCard
         key={ ingredient.strIngredient1 }
         index={ index }
         ingredientTitle={ ingredient.strIngredient1 }
-        ingredientThumb={ `https://www.thecocktaildb.com/images/ingredients/${ingredient.strIngredient1}-Small.png` }
+        ingredientThumb={ ingredient.thumbIngredient }
       />
     ),
   );

@@ -9,13 +9,11 @@ import ExplorarComidas from './pages/ExplorarComidas';
 import ExplorarBebidas from './pages/ExplorarBebidas';
 import ReceitasFeitas from './pages/ReceitasFeitas';
 import ReceitasFavoritas from './pages/ReceitasFavoritas';
-import ExplorarIngredientesComidas from './pages/ExplorarIngredientesComidas';
-import ExplorarIngredientesBebidas from './pages/ExplorarIngredientesBebidas';
 import Area from './pages/Area';
 import Detalhes from './pages/Detalhes';
 import Progresso from './pages/Progresso';
 import NotFound from './pages/NotFound';
-// import ExplorarIngredientes from './pages/ExplorarIngredientes';
+import ExplorarIngredientes from './pages/ExplorarIngredientes';
 
 export default function Routes() {
   return (
@@ -30,14 +28,8 @@ export default function Routes() {
       <Route exact path="/explorar" component={ Explorar } />
       <Route exact path="/explorar/comidas" component={ ExplorarComidas } />
       <Route exact path="/explorar/bebidas" component={ ExplorarBebidas } />
-      <Route
-        path="/explorar/comidas/ingredientes"
-        component={ ExplorarIngredientesComidas }
-      />
-      <Route
-        path="/explorar/bebidas/ingredientes"
-        component={ ExplorarIngredientesBebidas }
-      />
+      <Route path="/explorar/comidas/ingredientes" component={ ExplorarIngredientes } />
+      <Route path="/explorar/bebidas/ingredientes" component={ ExplorarIngredientes } />
       <Route path="/explorar/comidas/area" component={ Area } />
       <Route path="/explorar/bebidas/area" component={ NotFound } />
       <Route path="/perfil" component={ Perfil } />
