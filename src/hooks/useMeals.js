@@ -31,7 +31,12 @@ export function MealsProvider({ children }) {
     const fetchApi = async () => {
       const response = await fetch(URL);
       const { meals } = await response.json();
-      setMealData(meals);
+      const errorMsg = 'Sinto muito, não encontramos nenhuma receita para esses filtros.';
+      if (meals === null) {
+        global.alert(errorMsg);
+      } else {
+        setMealData(meals);
+      }
     };
     fetchApi();
   }, [URL]);

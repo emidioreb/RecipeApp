@@ -11,7 +11,8 @@ export function DrinkProvider({ children }) {
     nome: false,
     primeiraLetra: false,
   });
-  const [catDrinks, setCatDrinks] = useState('');
+  const [catDrinks, setCatDrinks] = useState([]);
+
   const BASE_URL = 'https://www.thecocktaildb.com/api/json/v1/1/filter.php?';
   const SEARCH_URL = 'https://www.thecocktaildb.com/api/json/v1/1/search.php?';
   let URL = 'https://www.thecocktaildb.com/api/json/v1/1/search.php?s=';
@@ -30,7 +31,12 @@ export function DrinkProvider({ children }) {
     const fetchApi = async () => {
       const response = await fetch(URL);
       const { drinks } = await response.json();
-      setDrinkData(drinks);
+      const errorMsg = 'Sinto muito, não encontramos nenhuma receita para esses filtros.';
+      if (drinks === null) {
+        global.alert(errorMsg);
+      } else {
+        setDrinkData(drinks);
+      }
     };
     fetchApi();
   }, [URL]);

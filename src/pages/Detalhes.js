@@ -1,5 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import PropTypes from 'prop-types';
+import { useHistory } from 'react-router';
 import useRecipeDetails from '../hooks/useRecipeDetails';
 import useMeals from '../hooks/useMeals';
 import useDrinks from '../hooks/useDrinks';
@@ -10,6 +11,7 @@ export default function Detalhes({ match: { params: { recipeID } } }) {
   const { drinkData } = useDrinks();
   const [carouselData, setCarouselData] = useState([]);
   const [onlyType, setOnlyType] = useState('');
+  const history = useHistory();
   const { recipe, loading } = useRecipeDetails(recipeID);
   const {
     image,
@@ -134,6 +136,7 @@ export default function Detalhes({ match: { params: { recipeID } } }) {
           className="categories-button-last"
           type="button"
           data-testid="start-recipe-btn"
+          onClick={ () => { history.push(`${recipeID}/in-progress`); } }
         >
           Iniciar Receita
         </button>

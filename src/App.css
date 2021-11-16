@@ -262,18 +262,23 @@ header .form-btn {
 }
 
 .recipe-thumb {
-  max-width: 60%;
+  max-width: 80%;
+}
+
+.recipe-thumb-ingredient {
+  width: 300px;
 }
 
 .recipe-container {
   display: flex;
-  flex-direction: column;
+  flex-flow: row wrap;
   margin-top: 2rem;
   padding: 1rem;
 }
 
 .recipe-card {
   align-items: center;
+  background-color: var(--background-color);
   color: var(--font-color);
   display: flex;
   flex-direction: column;
@@ -282,7 +287,7 @@ header .form-btn {
 }
 
 .recipe-card h4 {
-  margin-bottom: 0.5rem;
+  margin-bottom: 1rem;
 }
 
 .categories-container {
@@ -401,4 +406,23 @@ header .form-btn {
 
 .i-test {
   border-radius: 10px;
+}
+
+.user-email {
+  color: var(--font-color);
+  margin-bottom: 1rem;
+}
+
+.not-found {
+  align-items: center;
+  display: flex;
+  flex-direction: column;
+  height: 100vh;
+  justify-content: center;
+  width: 100vw;
+}
+
+.link {
+  color: inherit;
+  text-decoration: underline;
 }
