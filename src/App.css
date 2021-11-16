@@ -365,6 +365,39 @@ header .form-btn {
   width: 100%;
 }
 
+.carousel-container {
+  display: flex;
+  flex-direction: column;
+  overflow-x: auto;
+  width: 100vw;
+}
+
+.carousel-container div {
+  display: flex;
+  flex-direction: row;
+  width: 100vw;
+}
+
+.carousel-container div .carousel-card {
+  align-items: center;
+  background-blend-mode: darken;
+  background-color: #00000043;
+  background-repeat: no-repeat;
+  background-size: cover;
+  border-radius: 30px;
+  color: white;
+  flex: none;
+  flex-direction: column;
+  height: 300px;
+  justify-content: center;
+  margin: 1rem 0.5rem;
+  width: 50%;
+}
+
+.carousel-container div .carousel-card:hover {
+  background-blend-mode: normal;
+}
+
 .container {
   display: flex;
   justify-content: center;

@@ -55,10 +55,12 @@ function useRecipeDetails(id) {
         instructions: recipeObject.strInstructions,
         video: treatVideoID(recipeObject.strYoutube),
         dosages: createMeasureAndIngredient(recipeObject),
+        type,
         // area: recipeObject.strArea,
         // alcoholicOrNot: recipeObject.strAlcoholic,
         // type,
       });
+      setRecipe(data);
     }
     fetchData();
     setLoading(false);
