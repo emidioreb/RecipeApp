@@ -20,7 +20,6 @@ function useRecipeDetails(id) {
       .filter((element) => element[0].includes('strIngredient'));
     const measures = Object.entries(object)
       .filter((element) => element[0].includes('strMeasure'));
-
     return ingredients.reduce((acc, curr, index) => {
       if (curr[1]) {
         return [...acc, `${measures[index][1]} ${curr[1]}`];
@@ -56,6 +55,9 @@ function useRecipeDetails(id) {
         instructions: recipeObject.strInstructions,
         video: treatVideoID(recipeObject.strYoutube),
         dosages: createMeasureAndIngredient(recipeObject),
+        // area: recipeObject.strArea,
+        // alcoholicOrNot: recipeObject.strAlcoholic,
+        // type,
       });
     }
     fetchData();
