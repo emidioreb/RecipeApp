@@ -4,7 +4,7 @@ import { useLocation } from 'react-router';
 function useRecipeDetails(id) {
   const { pathname } = useLocation();
   const [loading, setLoading] = useState(true);
-  const [recipe, setRecipe] = useState({});
+  const [recipe, setRecipe] = useState('');
 
   function treatVideoID(link) {
     const VIDEO_ID_CHARACTERS_NUMBER = -11;
@@ -49,15 +49,14 @@ function useRecipeDetails(id) {
       const response = await fetch(URL);
       const responseData = await response.json();
       const recipeObject = responseData[type][0];
-      const data = {
+      setRecipe({
         image: recipeObject[`str${onlyType}Thumb`],
         title: recipeObject[`str${onlyType}`],
         category: recipeObject.strCategory,
         instructions: recipeObject.strInstructions,
         video: treatVideoID(recipeObject.strYoutube),
         dosages: createMeasureAndIngredient(recipeObject),
-      };
-      setRecipe(data);
+      });
     }
     fetchData();
     setLoading(false);
