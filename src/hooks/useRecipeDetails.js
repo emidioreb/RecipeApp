@@ -16,6 +16,10 @@ function useRecipeDetails(id) {
   }
 
   function createMeasureAndIngredient(object) {
+    const measureTreat = (measure) => {
+      if (measure === null) return '';
+      return measure;
+    };
     const ingredients = Object.entries(object)
       .filter((element) => element[0].includes('strIngredient'));
     const measures = Object.entries(object)
