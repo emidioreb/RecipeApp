@@ -22,10 +22,15 @@ function useRecipeDetails(id) {
       .filter((element) => element[0].includes('strMeasure'));
     return ingredients.reduce((acc, curr, index) => {
       if (curr[1]) {
-        return [...acc, `${measures[index][1]} ${curr[1]}`];
+        return [...acc, `${measureTreat(measures[index][1])} ${curr[1]}`];
       }
       return acc;
     }, []);
+  }
+
+  function treatAlcoholicOrNot(string) {
+    if (string) return string;
+    return '';
   }
 
   useEffect(() => {
@@ -56,11 +61,9 @@ function useRecipeDetails(id) {
         video: treatVideoID(recipeObject.strYoutube),
         dosages: createMeasureAndIngredient(recipeObject),
         type,
-        // area: recipeObject.strArea,
-        // alcoholicOrNot: recipeObject.strAlcoholic,
-        // type,
+        area: recipeObject.strArea,
+        alcoholicOrNot: treatAlcoholicOrNot(recipeObject.strAlcoholic),
       });
-      setRecipe(data);
     }
     fetchData();
     setLoading(false);
