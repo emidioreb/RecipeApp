@@ -15,7 +15,7 @@ export default function Comidas() {
   } else {
     return (
       <div>
-        <Header title="Comidas" />
+        <Header title="Comidas" searchBtn />
         <CategoriesMeals />
         <section className="recipe-container">
           {mealData.map((meal, index) => (

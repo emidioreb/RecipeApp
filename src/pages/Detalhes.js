@@ -1,8 +1,10 @@
 import React from 'react';
 import PropTypes from 'prop-types';
+import { useHistory } from 'react-router';
 import useRecipeDetails from '../hooks/useRecipeDetails';
 
 export default function Detalhes({ match: { params: { recipeID } } }) {
+  const history = useHistory();
   const { recipe, loading } = useRecipeDetails(recipeID);
   const {
     image,
@@ -91,10 +93,10 @@ export default function Detalhes({ match: { params: { recipeID } } }) {
           className="categories-button-last"
           type="button"
           data-testid="start-recipe-btn"
+          onClick={ () => { history.push(`/comidas/${recipeID}/in-progress`); } }
         >
           Iniciar Receita
         </button>
-
       </div>
     </div>
   );
