@@ -93,7 +93,7 @@ export default function Detalhes({ match: { params: { recipeID } } }) {
           className="categories-button-last"
           type="button"
           data-testid="start-recipe-btn"
-          onClick={ () => { history.push(`/comidas/${recipeID}/in-progress`); } }
+          onClick={ () => { history.push(`${recipeID}/in-progress`); } }
         >
           Iniciar Receita
         </button>

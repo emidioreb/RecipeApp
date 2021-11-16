@@ -3,9 +3,14 @@ export const saveToken = () => {
   localStorage.setItem('cocktailsToken', 1);
 };
 
-export const emailToken = (xablau) => {
+export const emailToken = (mail) => {
   const objEmail = {
-    email: xablau,
+    email: mail,
   };
   localStorage.setItem('user', JSON.stringify(objEmail));
+};
+
+export const doneRecipes = (recipes) => {
+  const RecipesObj = [recipes];
+  localStorage.setItem('recipesDone', JSON.stringify(RecipesObj));
 };
