@@ -4,11 +4,16 @@ export default function useCopyRecipeLinkToClipboard(parentPath, recipeID) {
   const [shouldShowCopiedMessage, setShouldShowCopiedMessage] = useState(false);
   let urlType;
 
-  if (parentPath === 'meals') {
+  switch (parentPath) {
+  case 'meals':
     urlType = 'comidas';
-  } else {
+    break;
+  case 'drinks':
     urlType = 'bebidas';
+    break;
+  default:
   }
+
   const textToCopy = `http://localhost:3000/${urlType}/${recipeID}`;
 
   const copyRecipeLinkToClipboard = async () => {
