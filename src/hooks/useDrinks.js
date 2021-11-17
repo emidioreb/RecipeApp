@@ -1,5 +1,6 @@
 import PropTypes from 'prop-types';
 import React, { useEffect, useState, createContext, useContext } from 'react';
+import { useHistory } from 'react-router';
 
 const DrinkContext = createContext({});
 
@@ -12,6 +13,7 @@ export function DrinkProvider({ children }) {
     primeiraLetra: false,
   });
   const [catDrinks, setCatDrinks] = useState([]);
+  const { push } = useHistory();
 
   const BASE_URL = 'https://www.thecocktaildb.com/api/json/v1/1/filter.php?';
   const SEARCH_URL = 'https://www.thecocktaildb.com/api/json/v1/1/search.php?';
@@ -34,6 +36,8 @@ export function DrinkProvider({ children }) {
       const errorMsg = 'Sinto muito, não encontramos nenhuma receita para esses filtros.';
       if (drinks === null) {
         global.alert(errorMsg);
+      } else if (drinks.length === 1) {
+        push(`/bebidas/${drinks[0].idDrink}`);
       } else {
         setDrinkData(drinks);
       }

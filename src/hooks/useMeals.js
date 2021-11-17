@@ -1,5 +1,6 @@
 import PropTypes from 'prop-types';
 import React, { useEffect, useState, createContext, useContext } from 'react';
+import { useHistory } from 'react-router';
 
 const MealsContext = createContext({});
 
@@ -12,6 +13,7 @@ export function MealsProvider({ children }) {
     primeiraLetra: false,
   });
   const [catMeals, setCatMeals] = useState([]);
+  const { push } = useHistory();
 
   const BASE_URL = 'https://www.themealdb.com/api/json/v1/1/filter.php?';
   const SEARCH_URL = 'https://www.themealdb.com/api/json/v1/1/search.php?';
@@ -24,7 +26,7 @@ export function MealsProvider({ children }) {
   } else if (mealFilter.primeiraLetra) {
     URL = `${SEARCH_URL}f=${mealFilter.searchInput}`;
   } else if (catMeals.length > 0) {
-    URL = `https://www.themealdb.com/api/json/v1/1/filter.php?c=${catMeals}`;
+    URL = `${BASE_URL}c=${catMeals}`;
   }
 
   useEffect(() => {
@@ -34,6 +36,8 @@ export function MealsProvider({ children }) {
       const errorMsg = 'Sinto muito, não encontramos nenhuma receita para esses filtros.';
       if (meals === null) {
         global.alert(errorMsg);
+      } else if (meals.length === 1) {
+        push(`/comidas/${meals[0].idMeal}`);
       } else {
         setMealData(meals);
       }
