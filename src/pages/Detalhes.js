@@ -171,6 +171,7 @@ export default function Detalhes({ match: { params: { recipeID } } }) {
 }
 
 Detalhes.propTypes = {
-  match: PropTypes.shape({ params: PropTypes.shape({ recipeID: PropTypes.string }),
-  }).isRequired,
+  match: PropTypes
+    .shape({ params: PropTypes.shape({ recipeID: PropTypes.string }),
+    }).isRequired,
 };
