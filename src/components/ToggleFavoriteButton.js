@@ -3,7 +3,7 @@ import PropTypes from 'prop-types';
 import blackHeartIcon from '../images/blackHeartIcon.svg';
 import whiteHearIcon from '../images/whiteHeartIcon.svg';
 
-export default function ToggleFavoriteRecipeButton({ isFavorite, onClick, dataTestID }) {
+export default function ToggleFavoriteButton({ isFavorite, onClick, dataTestID }) {
   return (
     <input
       className="details-button"
@@ -16,7 +16,7 @@ export default function ToggleFavoriteRecipeButton({ isFavorite, onClick, dataTe
   );
 }
 
-ToggleFavoriteRecipeButton.propTypes = {
+ToggleFavoriteButton.propTypes = {
   isFavorite: PropTypes.bool.isRequired,
   onClick: PropTypes.func.isRequired,
   dataTestID: PropTypes.string.isRequired,
