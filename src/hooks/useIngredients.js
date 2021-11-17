@@ -12,7 +12,7 @@ export function IngredientsProvider({ children }) {
     const fetchApi = async (food) => {
       const response = await fetch(ingredientRequestURL);
       const resolve = await response.json();
-      setIngredientData(await resolve[food]);
+      setIngredientData(resolve[food]);
     };
     fetchApi(type);
   }, [ingredientRequestURL, type]);
