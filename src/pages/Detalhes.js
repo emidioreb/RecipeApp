@@ -81,7 +81,6 @@ export default function Detalhes({ match: { params: { recipeID } } }) {
         </div>
       </section>
       <nav className="recipe-nav">
-        {console.log(type)}
         <ShareRecipeButton
           parentPath={ type }
           recipeID={ recipeID }
