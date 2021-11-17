@@ -13,6 +13,7 @@ export default function Footer() {
             className="footer-btn"
             type="button"
             data-testid="drinks-bottom-btn"
+            src={ drinkIcon }
           >
             <img className="svg-color" src={ drinkIcon } alt="Ícone de Drinks" />
             Drinks
@@ -23,6 +24,7 @@ export default function Footer() {
             className="footer-btn"
             type="button"
             data-testid="explore-bottom-btn"
+            src={ exploreIcon }
           >
             <img className="svg-color" src={ exploreIcon } alt="Ícone de Explorar" />
             Explore
@@ -33,6 +35,7 @@ export default function Footer() {
             className="footer-btn"
             type="button"
             data-testid="food-bottom-btn"
+            src={ mealIcon }
           >
             <img className="svg-color" src={ mealIcon } alt="Ícone de Refeições" />
             Meals

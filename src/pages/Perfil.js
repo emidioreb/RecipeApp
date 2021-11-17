@@ -2,10 +2,15 @@ import React from 'react';
 import { Link } from 'react-router-dom';
 import Header from '../components/Header';
 import { emailToken } from '../localStorage';
+import Footer from '../components/Footer';
 
 export default function Perfil() {
-  emailToken('');
-  const userEmail = Object.values(JSON.parse(window.localStorage.getItem('user')));
+  let userEmail;
+  if (JSON.parse(window.localStorage.getItem('user'))) {
+    userEmail = Object.values(JSON.parse(window.localStorage.getItem('user')));
+  } else {
+    emailToken('');
+  }
 
   function clearLocalStorage() {
     localStorage.clear();
@@ -40,6 +45,7 @@ export default function Perfil() {
             Sair
           </button>
         </Link>
+        <Footer />
       </div>
     </>
   );
