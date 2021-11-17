@@ -3,6 +3,7 @@ import { Link } from 'react-router-dom';
 import { useHistory } from 'react-router';
 import Header from '../components/Header';
 import useIngredients from '../hooks/useIngredients';
+import Footer from '../components/Footer';
 
 export default function ExplorarComidas() {
   const { setIngredientRequestURL, setType } = useIngredients();
@@ -47,6 +48,7 @@ export default function ExplorarComidas() {
           </button>
         </Link>
       </section>
+      <Footer />
     </div>
   );
 }

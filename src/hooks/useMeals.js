@@ -36,7 +36,7 @@ export function MealsProvider({ children }) {
       const errorMsg = 'Sinto muito, não encontramos nenhuma receita para esses filtros.';
       if (meals === null) {
         global.alert(errorMsg);
-      } else if (meals.length === 1) {
+      } else if (meals.length === 1 && !meals[0].idMeal.includes('52968')) {
         push(`/comidas/${meals[0].idMeal}`);
       } else {
         setMealData(meals);

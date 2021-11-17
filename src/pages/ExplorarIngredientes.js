@@ -4,6 +4,7 @@ import Header from '../components/Header';
 import IngredientCard from '../components/IngredientCard';
 import useIngredients from '../hooks/useIngredients';
 import ingredients from '../mocks/ingredients';
+import Footer from '../components/Footer';
 
 export default function ExplorarIngredientes() {
   const { setIngredientRequestURL, setType, type } = useIngredients();
@@ -51,6 +52,7 @@ export default function ExplorarIngredientes() {
     <div>
       <Header title="Explorar Ingredientes" />
       {type === 'meals' ? renderMeals() : renderDrinks()}
+      <Footer />
     </div>
   );
 }

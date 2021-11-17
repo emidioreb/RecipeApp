@@ -6,7 +6,7 @@ import useMeals from '../hooks/useMeals';
 import useDrinks from '../hooks/useDrinks';
 import onlyNumberItems from '../helpers/onlyNumberItems';
 import useFavoriteRecipes from '../hooks/useFavoriteRecipes';
-import ToggleFavoriteRecipeButton from '../components/ToggleFavoriteButton';
+import ToggleFavoriteButton from '../components/ToggleFavoriteButton';
 import ShareRecipeButton from '../components/ShareRecipeButton';
 
 export default function Detalhes({ match: { params: { recipeID } } }) {
@@ -29,6 +29,10 @@ export default function Detalhes({ match: { params: { recipeID } } }) {
     alcoholicOrNot,
   } = recipe;
 
+  function convertTypeToPortuguese() {
+    return type === 'meals' ? 'comida' : 'drinks';
+  }
+
   const handleClick = () => {
     const isFavoriteRecipe = getFavoriteStatusByID(recipeID);
     if (isFavoriteRecipe) {
@@ -36,7 +40,7 @@ export default function Detalhes({ match: { params: { recipeID } } }) {
     } else {
       const newFavoriteRecipe = {
         id: recipeID,
-        type,
+        type: convertTypeToPortuguese(),
         area: area || '',
         category,
         alcoholicOrNot: alcoholicOrNot || '',
@@ -76,7 +80,7 @@ export default function Detalhes({ match: { params: { recipeID } } }) {
             {title}
           </h2>
           <h3 className="recipe-title" data-testid="recipe-category">
-            {category}
+            {history.location.pathname.includes('bebida') ? alcoholicOrNot : category}
           </h3>
         </div>
       </section>
@@ -86,7 +90,7 @@ export default function Detalhes({ match: { params: { recipeID } } }) {
           recipeID={ recipeID }
           dataTestID="share-btn"
         />
-        <ToggleFavoriteRecipeButton
+        <ToggleFavoriteButton
           isFavorite={ getFavoriteStatusByID(recipeID) }
           onClick={ handleClick }
           dataTestID="favorite-btn"
@@ -167,9 +171,7 @@ export default function Detalhes({ match: { params: { recipeID } } }) {
 }
 
 Detalhes.propTypes = {
-  match: PropTypes.shape({
-    params: PropTypes.shape({
-      recipeID: PropTypes.string,
-    }),
-  }).isRequired,
+  match: PropTypes
+    .shape({ params: PropTypes.shape({ recipeID: PropTypes.string }),
+    }).isRequired,
 };

@@ -3,6 +3,7 @@ import { Link } from 'react-router-dom';
 import Header from '../components/Header';
 import drinkIcon from '../images/drinkIcon.svg';
 import mealIcon from '../images/mealIcon.svg';
+import Footer from '../components/Footer';
 
 export default function Explorar() {
   return (
@@ -31,6 +32,7 @@ export default function Explorar() {
             </p>
           </button>
         </Link>
+        <Footer />
       </div>
     </>
   );
