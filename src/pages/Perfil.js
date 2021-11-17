@@ -1,8 +1,10 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
 import Header from '../components/Header';
+import { emailToken } from '../localStorage';
 
 export default function Perfil() {
+  emailToken('');
   const userEmail = Object.values(JSON.parse(window.localStorage.getItem('user')));
 
   function clearLocalStorage() {
