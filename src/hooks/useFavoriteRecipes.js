@@ -23,15 +23,15 @@ export default function useFavoriteRecipes() {
     setFavoriteRecipes(newFavoriteRecipes);
   };
 
-  const recipesDone = (targetID, newFavoriteRecipe) => {
-    const currentFavoriteRecipes = getLocalStorage('favoriteRecipes') || [];
-    let newFavoriteRecipes;
-    if (newFavoriteRecipe) {
-      newFavoriteRecipes = [...currentFavoriteRecipes, newFavoriteRecipe];
-    }
-    setLocalStorage('recipesDone', newFavoriteRecipes);
-    setFavoriteRecipes(newFavoriteRecipes);
-  };
+  // const recipesDone = (targetID, newFavoriteRecipe) => {
+  //   const currentFavoriteRecipes = getLocalStorage('favoriteRecipes') || [];
+  //   let newFavoriteRecipes;
+  //   if (newFavoriteRecipe) {
+  //     newFavoriteRecipes = [...currentFavoriteRecipes, newFavoriteRecipe];
+  //   }
+  //   setLocalStorage('recipesDone', newFavoriteRecipes);
+  //   setFavoriteRecipes(newFavoriteRecipes);
+  // };
 
   return { favoriteRecipes, getFavoriteStatusByID, toggleFavoriteStatus };
 }

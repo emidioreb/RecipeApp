@@ -30,11 +30,7 @@ export default function Detalhes({ match: { params: { recipeID } } }) {
   } = recipe;
 
   function convertTypeToPortuguese() {
-    if (type === 'meals') {
-      return 'comida';
-    } if (type === 'drinks') {
-      return 'bebida';
-    }
+    return type === 'meals' ? 'comida' : 'drinks';
   }
 
   const handleClick = () => {
