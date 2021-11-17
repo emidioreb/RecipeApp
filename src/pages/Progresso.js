@@ -1,7 +1,7 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import useRecipeDetails from '../hooks/useRecipeDetails';
-import { doneRecipes } from '../localStorage';
+// import { doneRecipes } from '../localStorage';
 
 export default function Progresso({ match: { params: { recipeID } } }) {
   const { recipe, loading } = useRecipeDetails(recipeID);
