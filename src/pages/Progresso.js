@@ -1,13 +1,13 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import useRecipeDetails from '../hooks/useRecipeDetails';
-import { doneRecipes } from '../localStorage';
+// import { doneRecipes } from '../localStorage';
 
 export default function Progresso({ match: { params: { recipeID } } }) {
   const { recipe, loading } = useRecipeDetails(recipeID);
   const { image, title, category, instructions, dosages } = recipe;
-  const getDoneRecipes = Object
-    .values(JSON.parse(window.localStorage.getItem('recipesDone')));
+  // const getDoneRecipes = Object
+  //   .values(JSON.parse(window.localStorage.getItem('recipesDone')));
 
   // const localStorageDoneRecipes = {
   //   id: recipeID,
@@ -20,6 +20,7 @@ export default function Progresso({ match: { params: { recipeID } } }) {
   //   doneDate: quando-a-receita-foi-concluida,
   //   tags: array-de-tags-da-receita-ou-array-vazio
   // };
+
   function renderDosages() {
     return dosages
       && dosages.map((dosage, index) => (
@@ -51,7 +52,7 @@ export default function Progresso({ match: { params: { recipeID } } }) {
       </form>
       <h4 data-testid="instructions">{instructions}</h4>
       <button
-        onClick={ () => { doneRecipes(...getDoneRecipes); } }
+        // onClick={ () => { doneRecipes(...getDoneRecipes); } }
         type="button"
         data-testid="finish-recipe-btn"
       >
