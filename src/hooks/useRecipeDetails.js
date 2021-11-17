@@ -60,7 +60,7 @@ function useRecipeDetails(id) {
         // alcoholicOrNot: recipeObject.strAlcoholic,
         // type,
       });
-      setRecipe(data);
+      // setRecipe(data);
     }
     fetchData();
     setLoading(false);

@@ -14,3 +14,15 @@ export const doneRecipes = (recipes) => {
   const RecipesObj = [recipes];
   localStorage.setItem('recipesDone', JSON.stringify(RecipesObj));
 };
+
+export const progressRecipes = () => {
+  // Lógica para verificação se a chave inProgressRecipes existe ou não existe
+  const obj = JSON.parse(localStorage.getItem('inProgressRecipes'));
+  if (obj === null) {
+    const recipesProgress = {
+      cocktails: {},
+      meals: {},
+    };
+    localStorage.setItem('inProgressRecipes', JSON.stringify(recipesProgress));
+  }
+};
