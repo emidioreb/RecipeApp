@@ -1,90 +1,46 @@
 import React, { useEffect, useState } from 'react';
 import PropTypes from 'prop-types';
-import { useHistory } from 'react-router';
+import { useLocation } from 'react-router-dom';
 import useRecipeDetails from '../hooks/useRecipeDetails';
-// import { doneRecipes } from '../localStorage';
 
 export default function Progresso({ match: { params: { recipeID } } }) {
+  const { pathname } = useLocation();
+  const treatType = () => {
+    if (pathname.includes('bebida')) return 'cocktails';
+    return 'meals';
+  };
+  const localSteps = JSON
+    .parse(localStorage
+      .getItem('inProgressRecipes'))[treatType()][recipeID];
   const { recipe, loading } = useRecipeDetails(recipeID);
   const { image, title, category, instructions, dosages } = recipe;
-  const { location: { pathname } } = useHistory();
-  const [xablauzin, setXablauzin] = useState([]);
+  const definedSteps = localSteps || [];
+  const [steps, setSteps] = useState(definedSteps);
+
   useEffect(() => {
-    const check = () => {
-      const inProgress = JSON.parse(localStorage.getItem('inProgressRecipes'));
-      const arrayCheck = inProgress.meals[recipeID];
-      setXablauzin(arrayCheck);
-      // arrayCheck === undefined ? null : arrayCheck.includes(xulanbs);
-    };
-    check();
-  }, []);
-  function renderDosages() {
-    const addMeals = (index) => {
-      const inProgress = JSON.parse(localStorage.getItem('inProgressRecipes'));
-      const xablau = Object.keys(inProgress.meals).length;
-      if (xablau === 0) {
-        inProgress.meals[recipeID] = [index];
-        localStorage.setItem('inProgressRecipes', JSON.stringify(inProgress));
-      } else {
-        inProgress.meals[recipeID].push(index);
-        localStorage.setItem('inProgressRecipes', JSON.stringify(inProgress));
-      }
-    };
+    const inProgress = JSON.parse(localStorage.getItem('inProgressRecipes'));
+    if (!inProgress[treatType()][recipeID]) {
+      inProgress[treatType()][recipeID] = [];
+    } else {
+      inProgress[treatType()][recipeID] = steps;
+    }
+    localStorage.setItem('inProgressRecipes', JSON.stringify(inProgress));
+  }, [steps, loading]);
 
-    const removeMeals = (index) => {
-      const inProgress = JSON.parse(localStorage.getItem('inProgressRecipes'));
-      const ind = inProgress.meals[recipeID].indexOf(index);
-      inProgress.meals[recipeID].splice(ind, 1);
-      localStorage.setItem('inProgressRecipes', JSON.stringify(inProgress));
-    };
+  const addCompletedStep = (index) => steps && setSteps([...steps, index]);
 
-    const addCocktails = (index) => {
-      const inProgress = JSON.parse(localStorage.getItem('inProgressRecipes'));
-      const xablau = Object.keys(inProgress.cocktails).length;
-      if (xablau === 0) {
-        inProgress.cocktails[recipeID] = [index];
-        localStorage.setItem('inProgressRecipes', JSON.stringify(inProgress));
-      } else {
-        inProgress.cocktails[recipeID].push(index);
-        localStorage.setItem('inProgressRecipes', JSON.stringify(inProgress));
-      }
-    };
+  const removeCompletedStep = (index) => (steps
+    && setSteps([...steps.filter((element) => element !== index)]));
 
-    const removeCocktails = (index) => {
-      const inProgress = JSON.parse(localStorage.getItem('inProgressRecipes'));
-      const ind = inProgress.cocktails[recipeID].indexOf(index);
-      inProgress.cocktails[recipeID].splice(ind, 1);
-      localStorage.setItem('inProgressRecipes', JSON.stringify(inProgress));
-    };
+  const handleChange = ({ target: { checked } }, index) => {
+    if (checked) {
+      addCompletedStep(index);
+    } else {
+      removeCompletedStep(index);
+    }
+  };
 
-    const check = (xulanbs) => {
-      const inProgress = JSON.parse(localStorage.getItem('inProgressRecipes'));
-      const arrayCheck = inProgress.meals[recipeID];
-      return arrayCheck === undefined ? null : arrayCheck.includes(xulanbs);
-    };
-
-    return dosages
-      && dosages.map((dosage, index) => (
-        <label key={ index } htmlFor="dosages" data-testid="ingredient-step">
-          {dosage}
-          <input
-            key={ index }
-            style={ { display: 'flex', flexDirection: 'column' } }
-            type="checkbox"
-            checked={ xablauzin.includes(index) }
-            onClick={ () => { console.log('papai'); } }
-            id="dosages"
-            onChange={ ({ target }) => {
-              if (pathname.includes('comidas') === true) {
-                target.checked ? addMeals(index) : removeMeals(index);
-              } else {
-                target.checked ? addCocktails(index) : removeCocktails(index);
-              }
-            } }
-          />
-        </label>
-      ));
-  }
+  const isChecked = (index) => steps && steps.includes(index);
 
   if (loading) return '';
   return (
@@ -99,7 +55,25 @@ export default function Progresso({ match: { params: { recipeID } } }) {
       </button>
       <h3 data-testid="recipe-category">{category}</h3>
       <form>
-        {renderDosages()}
+        {
+          dosages && dosages.map((dosage, index) => (
+            <label
+              key={ index }
+              htmlFor={ `dosages${index}` }
+              data-testid={ `${index}-ingredient-step` }
+            >
+              {dosage}
+              <input
+                key={ index }
+                style={ { display: 'flex', flexDirection: 'column' } }
+                type="checkbox"
+                checked={ isChecked(index) }
+                id={ `dosages${index}` }
+                onChange={ (event) => handleChange(event, index) }
+              />
+            </label>
+          ))
+        }
       </form>
       <h4 data-testid="instructions">{instructions}</h4>
       <button
