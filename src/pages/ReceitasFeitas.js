@@ -1,9 +1,7 @@
 import React, { useEffect, useState } from 'react';
 import Header from '../components/Header';
-import ReceitasProntasComidas
-  from '../components/ReceitasFeitasComidas';
-import ReceitasProntasBebidas
-  from '../components/ReceitasFeitasBebidas';
+import ReceitasFeitasComidas from '../components/ReceitasFeitasComidas';
+import ReceitasFeitasBebidas from '../components/ReceitasFeitasBebidas';
 
 export default function ReceitasFeitas() {
   const [receitasFeitas, setReceitasFeitas] = useState([]);
@@ -18,13 +16,13 @@ export default function ReceitasFeitas() {
   function renderReceitas() {
     return receitasFeitas.map((receita, index) => {
       if (receita.type === 'comida') {
-        return (<ReceitasProntasComidas
+        return (<ReceitasFeitasComidas
           key={ receita.id }
           index={ index }
           receitasProntas={ [receita] }
         />);
       }
-      return (<ReceitasProntasBebidas
+      return (<ReceitasFeitasBebidas
         key={ receita.id }
         index={ index }
         receitasProntas={ [receita] }
@@ -34,7 +32,7 @@ export default function ReceitasFeitas() {
 
   function renderBebida() {
     return receitasFeitas.filter((receita) => receita.type === 'drinks')
-      .map((receita, index) => (<ReceitasProntasBebidas
+      .map((receita, index) => (<ReceitasFeitasBebidas
         key={ receita.id }
         index={ index }
         receitasProntas={ [receita] }
@@ -44,7 +42,7 @@ export default function ReceitasFeitas() {
   function renderComida() {
     return receitasFeitas.filter((receita) => receita.type === 'meals')
       .map((receita, index) => (
-        <ReceitasProntasComidas
+        <ReceitasFeitasComidas
           key={ receita.id }
           index={ index }
           receitasProntas={ [receita] }

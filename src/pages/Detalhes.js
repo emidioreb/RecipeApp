@@ -29,9 +29,7 @@ export default function Detalhes({ match: { params: { recipeID } } }) {
     alcoholicOrNot,
   } = recipe;
 
-  function convertTypeToPortuguese() {
-    return type === 'meals' ? 'comida' : 'bebida';
-  }
+  const convertTypeToPortuguese = () => (type === 'meals' ? 'comida' : 'bebida');
 
   const handleClick = () => {
     const isFavoriteRecipe = getFavoriteStatusByID(recipeID);
