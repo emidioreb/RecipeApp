@@ -5,7 +5,9 @@ import Footer from '../components/Footer';
 import Header from '../components/Header';
 import RecipeCard from '../components/RecipeCard';
 import useMeals from '../hooks/useMeals';
+import { progressRecipes } from '../localStorage';
 
+progressRecipes();
 export default function Comidas() {
   const { location } = useHistory();
   const { mealData } = useMeals();
