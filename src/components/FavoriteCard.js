@@ -8,8 +8,8 @@ export default function RecipeCard({ id, title,
     <Link className="recipe-card" to={ `${type}${id}` }>
       <div className="recipe-card">
         <h4 data-testid={ `${index}-horizontal-name` }>{title}</h4>
-        <h5 data-testid={ `${index}-horizontal-top-text` }>
-          {`${area} - ${category}`}
+        <h5 className="teste" data-testid={ `${index}-horizontal-top-text` }>
+          {area ? `${area} - ${category}` : `${category} - `}
           {alcoholicOrNot}
         </h5>
         <img
