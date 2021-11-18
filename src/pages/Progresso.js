@@ -4,7 +4,11 @@ import { useLocation } from 'react-router-dom';
 import useRecipeDetails from '../hooks/useRecipeDetails';
 import ShareRecipeButton from '../components/ShareRecipeButton';
 
-export default function Progresso({ match: { params: { recipeID } } }) {
+export default function Progresso({
+  match: {
+    params: { recipeID },
+  },
+}) {
   const { pathname } = useLocation();
   const treatType = () => {
     if (pathname.includes('bebida')) return 'cocktails';
@@ -31,7 +35,8 @@ export default function Progresso({ match: { params: { recipeID } } }) {
 
   const addCompletedStep = (index) => steps && setSteps([...steps, index]);
 
-  const removeCompletedStep = (index) => steps && setSteps([...steps.filter((element) => element !== index)]);
+  const removeCompletedStep = (index) => steps && setSteps([...steps
+    .filter((element) => element !== index)]);
 
   const handleChange = ({ target: { checked } }, index) => {
     if (checked) {

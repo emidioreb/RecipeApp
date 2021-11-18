@@ -33,7 +33,7 @@ export default function ReceitasFeitas() {
   }
 
   function renderBebida() {
-    return receitasFeitas.filter((receita) => receita.type === 'bebida')
+    return receitasFeitas.filter((receita) => receita.type === 'drinks')
       .map((receita, index) => (<ReceitasProntasBebidas
         key={ receita.id }
         index={ index }
