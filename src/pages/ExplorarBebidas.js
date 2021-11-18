@@ -4,10 +4,12 @@ import { useHistory } from 'react-router';
 import Header from '../components/Header';
 import useIngredients from '../hooks/useIngredients';
 import Footer from '../components/Footer';
+import useRandomRecipe from '../hooks/useRandomRecipe';
 
 export default function ExplorarBebidas() {
   const { setIngredientRequestURL, setType } = useIngredients();
   const history = useHistory();
+  const randomID = useRandomRecipe();
 
   setIngredientRequestURL('https://www.thecocktaildb.com/api/json/v1/1/list.php?i=list');
   setType('drinks');
@@ -28,7 +30,7 @@ export default function ExplorarBebidas() {
         >
           Por Ingredientes
         </button>
-        <Link to="/bebidas/:id-da-receita">
+        <Link to={ `/bebidas/${randomID}` }>
           <button
             className="explore-btn"
             type="button"
