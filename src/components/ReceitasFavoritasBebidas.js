@@ -2,7 +2,7 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import ShareRecipeButton from './ShareRecipeButton';
 import ToggleFavoriteButton from './ToggleFavoriteButton';
-import RecipeCard from './RecipeCard';
+import FavoriteCard from './FavoriteCard';
 
 export default function ReceitasFavoritasBebidas(
   { receitasFavoritas, toggleFavoriteStatus, index },
@@ -11,17 +11,19 @@ export default function ReceitasFavoritasBebidas(
     <div>
       { receitasFavoritas.map((item) => (
         <>
-          <RecipeCard
+          <FavoriteCard
             key={ index }
-            idRecipe={ item.id }
             id={ item.id }
-            recipeTitle={ item.name }
-            recipeThumb={ item.image }
-            recipe="/bebidas/"
+            title={ item.name }
+            thumb={ item.image }
+            type="/bebidas/"
+            index={ index }
+            alcoholicOrNot={ item.alcoholicOrNot }
+            category={ item.category }
           />
           <navbar className="teste">
             <ShareRecipeButton
-              parentPath="bebidas"
+              parentPath="drinks"
               recipeID={ item.id }
               dataTestID={ `${index}-horizontal-share-btn` }
             />

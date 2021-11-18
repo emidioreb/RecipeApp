@@ -34,7 +34,7 @@ export default function ReceitasFeitas() {
   }
 
   function renderBebida() {
-    return favoriteRecipes.filter((receita) => receita.type === 'drinks')
+    return favoriteRecipes.filter((receita) => receita.type === 'bebida')
       .map((receita, index) => (<ReceitasFavoritasBebidas
         key={ receita.id }
         index={ index }
