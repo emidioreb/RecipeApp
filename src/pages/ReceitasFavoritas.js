@@ -11,7 +11,8 @@ export default function ReceitasFeitas() {
 
   function renderReceitas() {
     return favoriteRecipes.map((receita, index) => {
-      if (receita.type === 'meals') {
+      console.log(receita.type);
+      if (receita.type === 'comida') {
         return (
           <ReceitasFavoritasComidas
             key={ receita.id }
@@ -43,7 +44,7 @@ export default function ReceitasFeitas() {
   }
 
   function renderComida() {
-    return favoriteRecipes.filter((receita) => receita.type === 'meals')
+    return favoriteRecipes.filter((receita) => receita.type === 'comida')
       .map((receita, index) => (
         <ReceitasFavoritasComidas
           key={ receita.id }

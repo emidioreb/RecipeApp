@@ -2,18 +2,24 @@ import React, { useEffect, useState } from 'react';
 import PropTypes from 'prop-types';
 import { useLocation } from 'react-router-dom';
 import useRecipeDetails from '../hooks/useRecipeDetails';
+import ShareRecipeButton from '../components/ShareRecipeButton';
 
-export default function Progresso({ match: { params: { recipeID } } }) {
+export default function Progresso({
+  match: {
+    params: { recipeID },
+  },
+}) {
   const { pathname } = useLocation();
   const treatType = () => {
     if (pathname.includes('bebida')) return 'cocktails';
     return 'meals';
   };
-  const localSteps = JSON
-    .parse(localStorage
-      .getItem('inProgressRecipes'))[treatType()][recipeID];
+  const localSteps = JSON.parse(localStorage.getItem('inProgressRecipes'))[
+    treatType()
+  ][recipeID];
   const { recipe, loading } = useRecipeDetails(recipeID);
   const { image, title, category, instructions, dosages } = recipe;
+
   const definedSteps = localSteps || [];
   const [steps, setSteps] = useState(definedSteps);
 
@@ -29,8 +35,8 @@ export default function Progresso({ match: { params: { recipeID } } }) {
 
   const addCompletedStep = (index) => steps && setSteps([...steps, index]);
 
-  const removeCompletedStep = (index) => (steps
-    && setSteps([...steps.filter((element) => element !== index)]));
+  const removeCompletedStep = (index) => steps && setSteps([...steps
+    .filter((element) => element !== index)]);
 
   const handleChange = ({ target: { checked } }, index) => {
     if (checked) {
@@ -47,16 +53,14 @@ export default function Progresso({ match: { params: { recipeID } } }) {
     <div>
       <img alt="Recipe" data-testid="recipe-photo" src={ image } />
       <h1 data-testid="recipe-title">{title}</h1>
-      <button type="button" data-testid="share-btn">
-        Compartilhar
-      </button>
+      <ShareRecipeButton />
       <button type="button" data-testid="favorite-btn">
-        Favoritar
+        Favorita
       </button>
       <h3 data-testid="recipe-category">{category}</h3>
       <form>
-        {
-          dosages && dosages.map((dosage, index) => (
+        {dosages
+          && dosages.map((dosage, index) => (
             <label
               key={ index }
               htmlFor={ `dosages${index}` }
@@ -72,8 +76,7 @@ export default function Progresso({ match: { params: { recipeID } } }) {
                 onChange={ (event) => handleChange(event, index) }
               />
             </label>
-          ))
-        }
+          ))}
       </form>
       <h4 data-testid="instructions">{instructions}</h4>
       <button
