@@ -72,28 +72,32 @@ export default function ReceitasFeitas() {
   return (
     <div>
       <Header title="Receitas Favoritas" search={ false } />
-      <button
-        data-testid="filter-by-all-btn"
-        type="button"
-        onClick={ handleClickFilterAll }
-      >
-        All
-      </button>
-      <button
-        className="categories-button"
-        data-testid="filter-by-food-btn"
-        type="button"
-        onClick={ handleClickFilterComida }
-      >
-        Food
-      </button>
-      <button
-        data-testid="filter-by-drink-btn"
-        type="button"
-        onClick={ handleClickFilterBebida }
-      >
-        Drinks
-      </button>
+      <div className="teste">
+        <button
+          className="details-button"
+          data-testid="filter-by-all-btn"
+          type="button"
+          onClick={ handleClickFilterAll }
+        >
+          All
+        </button>
+        <button
+          className="details-button"
+          data-testid="filter-by-food-btn"
+          type="button"
+          onClick={ handleClickFilterComida }
+        >
+          Food
+        </button>
+        <button
+          className="details-button"
+          data-testid="filter-by-drink-btn"
+          type="button"
+          onClick={ handleClickFilterBebida }
+        >
+          Drinks
+        </button>
+      </div>
       {favoriteRecipes && !isBebida && !isComida && renderReceitas() }
       {favoriteRecipes && isComida && renderComida() }
       {favoriteRecipes && isBebida && renderBebida() }

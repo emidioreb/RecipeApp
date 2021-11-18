@@ -21,7 +21,7 @@ export default function ReceitasFavoritasBebidas(
             alcoholicOrNot={ item.alcoholicOrNot }
             category={ item.category }
           />
-          <navbar className="teste">
+          <div className="teste">
             <ShareRecipeButton
               parentPath="drinks"
               recipeID={ item.id }
@@ -32,7 +32,7 @@ export default function ReceitasFavoritasBebidas(
               onClick={ () => toggleFavoriteStatus(item.id) }
               dataTestID={ `${index}-horizontal-favorite-btn` }
             />
-          </navbar>
+          </div>
         </>
       ))}
     </div>
