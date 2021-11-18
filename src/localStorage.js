@@ -39,7 +39,6 @@ export const favoriteRecipes = (recipes) => {
   localStorage.setItem('favoriteRecipes', JSON.stringify(favoriteList));
 };
 
-
 export const progressRecipes = () => {
   // Lógica para verificação se a chave inProgressRecipes existe ou não existe
   const obj = JSON.parse(localStorage.getItem('inProgressRecipes'));
@@ -51,6 +50,7 @@ export const progressRecipes = () => {
     localStorage.setItem('inProgressRecipes', JSON.stringify(recipesProgress));
   }
 };
+// abc
 export function getLocalStorage(key) {
   const value = localStorage.getItem(key);
   if (!value) return value;
