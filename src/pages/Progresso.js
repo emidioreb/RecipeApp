@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from 'react';
 import PropTypes from 'prop-types';
-import { useLocation } from 'react-router-dom';
+import { Link, useLocation } from 'react-router-dom';
 import useRecipeDetails from '../hooks/useRecipeDetails';
 import ShareRecipeButton from '../components/ShareRecipeButton';
 
@@ -79,13 +79,15 @@ export default function Progresso({
           ))}
       </form>
       <h4 data-testid="instructions">{instructions}</h4>
-      <button
-        // onClick={ () => { doneRecipes(...getDoneRecipes); } }
-        type="button"
-        data-testid="finish-recipe-btn"
-      >
-        Finalizar receita
-      </button>
+      <Link to="/receitas-feitas">
+        <button
+          // onClick={ () => { doneRecipes(...getDoneRecipes); } }
+          type="button"
+          data-testid="finish-recipe-btn"
+        >
+          Finalizar receita
+        </button>
+      </Link>
     </div>
   );
 }
