@@ -4,11 +4,7 @@ import { useLocation } from 'react-router-dom';
 import useRecipeDetails from '../hooks/useRecipeDetails';
 import ShareRecipeButton from '../components/ShareRecipeButton';
 
-export default function Progresso({
-  match: {
-    params: { recipeID },
-  },
-}) {
+export default function Progresso({ match: { params: { recipeID } } }) {
   const { pathname } = useLocation();
   const treatType = () => {
     if (pathname.includes('bebida')) return 'cocktails';
