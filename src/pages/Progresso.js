@@ -1,39 +1,47 @@
-import React from 'react';
+import React, { useEffect, useState } from 'react';
 import PropTypes from 'prop-types';
+import { useLocation } from 'react-router-dom';
 import useRecipeDetails from '../hooks/useRecipeDetails';
-// import { doneRecipes } from '../localStorage';
 
 export default function Progresso({ match: { params: { recipeID } } }) {
+  const { pathname } = useLocation();
+  const treatType = () => {
+    if (pathname.includes('bebida')) return 'cocktails';
+    return 'meals';
+  };
+  const localSteps = JSON
+    .parse(localStorage
+      .getItem('inProgressRecipes'))[treatType()][recipeID];
   const { recipe, loading } = useRecipeDetails(recipeID);
   const { image, title, category, instructions, dosages } = recipe;
-  // const getDoneRecipes = Object
-  //   .values(JSON.parse(window.localStorage.getItem('recipesDone')));
+  const definedSteps = localSteps || [];
+  const [steps, setSteps] = useState(definedSteps);
 
-  // const localStorageDoneRecipes = {
-  //   id: recipeID,
-  //   type,
-  //   area: area-da-receita-ou-texto-vazio,
-  //   category: categoria-da-receita-ou-texto-vazio,
-  //   alcoholicOrNot: alcoholic-ou-non-alcoholic-ou-texto-vazio,
-  //   name: nome-da-receita,
-  //   image: imagem-da-receita,
-  //   doneDate: quando-a-receita-foi-concluida,
-  //   tags: array-de-tags-da-receita-ou-array-vazio
-  // };
+  useEffect(() => {
+    const inProgress = JSON.parse(localStorage.getItem('inProgressRecipes'));
+    if (!inProgress[treatType()][recipeID]) {
+      inProgress[treatType()][recipeID] = [];
+    } else {
+      inProgress[treatType()][recipeID] = steps;
+    }
+    localStorage.setItem('inProgressRecipes', JSON.stringify(inProgress));
+  }, [steps, loading]);
 
-  function renderDosages() {
-    return dosages
-      && dosages.map((dosage, index) => (
-        <label key={ index } htmlFor="dosages" data-testid="ingredient-step">
-          {dosage}
-          <input
-            style={ { display: 'flex', flexDirection: 'column' } }
-            type="checkbox"
-            id="dosages"
-          />
-        </label>
-      ));
-  }
+  const addCompletedStep = (index) => steps && setSteps([...steps, index]);
+
+  const removeCompletedStep = (index) => (steps
+    && setSteps([...steps.filter((element) => element !== index)]));
+
+  const handleChange = ({ target: { checked } }, index) => {
+    if (checked) {
+      addCompletedStep(index);
+    } else {
+      removeCompletedStep(index);
+    }
+  };
+
+  const isChecked = (index) => steps && steps.includes(index);
+
 
   if (loading) return '';
   return (
@@ -48,7 +56,25 @@ export default function Progresso({ match: { params: { recipeID } } }) {
       </button>
       <h3 data-testid="recipe-category">{category}</h3>
       <form>
-        {renderDosages()}
+        {
+          dosages && dosages.map((dosage, index) => (
+            <label
+              key={ index }
+              htmlFor={ `dosages${index}` }
+              data-testid={ `${index}-ingredient-step` }
+            >
+              {dosage}
+              <input
+                key={ index }
+                style={ { display: 'flex', flexDirection: 'column' } }
+                type="checkbox"
+                checked={ isChecked(index) }
+                id={ `dosages${index}` }
+                onChange={ (event) => handleChange(event, index) }
+              />
+            </label>
+          ))
+        }
       </form>
       <h4 data-testid="instructions">{instructions}</h4>
       <button
