@@ -9,12 +9,10 @@ import { progressRecipes } from '../localStorage';
 
 progressRecipes();
 export default function Comidas() {
-  const { push, location } = useHistory();
+  const { location } = useHistory();
   const { mealData } = useMeals();
   const NUM_MAX_CARDS = 12;
-  if (mealData.length === 1) {
-    push(`/comidas/${mealData[0].idMeal}`);
-  }
+
   return (
     <div>
       <Header title="Comidas" searchBtn />

@@ -1,10 +1,10 @@
 import React, { useState } from 'react';
+import { useLocation } from 'react-router';
 import useDrinks from '../hooks/useDrinks';
 import useMeals from '../hooks/useMeals';
 
-const history = window.location.pathname;
-
 function SearchBar() {
+  const { pathname } = useLocation();
   const [filter, setFilter] = useState({
     searchInput: '',
     ingrediente: false,
@@ -15,14 +15,11 @@ function SearchBar() {
   const { setDrinkFilter } = useDrinks();
 
   function submit() {
-    switch (history) {
-    case '/comidas':
-      setMealFilter(filter);
-      break;
-    case '/bebidas':
-      setDrinkFilter(filter);
-      break;
-    default:
+    if (pathname.includes('comidas')) {
+      return setMealFilter(filter);
+    }
+    if (pathname.includes('bebidas')) {
+      return setDrinkFilter(filter);
     }
   }
 

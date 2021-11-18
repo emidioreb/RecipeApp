@@ -1,6 +1,5 @@
 import React, { useEffect, useState } from 'react';
 import useMeals from '../hooks/useMeals';
-// import { useHistory } from 'react-router';
 
 export default function Categories() {
   const [categoryMeals, setCategoryMeals] = useState([]);
@@ -20,7 +19,7 @@ export default function Categories() {
   return (
     <div className="categories-container">
       <button
-        className="categories-button "
+        className="details-button"
         data-testid="All-category-filter"
         type="button"
         onClick={ () => setCatMeals([]) }
@@ -30,7 +29,7 @@ export default function Categories() {
       {categoryMeals.map((cat, index) => (
         index < NUM_MAX_BUTTONS && (
           <button
-            className="categories-button "
+            className="details-button"
             data-testid={ `${cat.strCategory}-category-filter` }
             type="button"
             key={ cat.strCategory }

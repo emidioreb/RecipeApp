@@ -2,7 +2,7 @@ import React from 'react';
 import { useHistory } from 'react-router';
 import InputLogin from './InputLogin';
 import useLogin from '../hooks/useLogin';
-import { saveToken, emailToken } from '../localStorage';
+import { saveToken, emailToken, setupLocalStorage } from '../localStorage';
 
 function Form() {
   const { password, setPassword, mail, setMail } = useLogin();
@@ -18,6 +18,7 @@ function Form() {
   const login = () => {
     saveToken();
     emailToken(mail);
+    setupLocalStorage();
     push('/comidas');
   };
 

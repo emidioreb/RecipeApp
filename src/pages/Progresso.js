@@ -42,6 +42,7 @@ export default function Progresso({ match: { params: { recipeID } } }) {
 
   const isChecked = (index) => steps && steps.includes(index);
 
+
   if (loading) return '';
   return (
     <div>

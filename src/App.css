@@ -291,37 +291,55 @@ header .form-btn {
 }
 
 .categories-container {
+  align-items: center;
   display: flex;
   flex-flow: row wrap;
   margin-top: 1rem;
 }
 
-.categories-button {
-  align-self: center;
-  background: var(--secondary-color);
+.details-button {
+  align-items: center;
+  background-color: var(--secondary-color);
   border-radius: 8px;
   color: var(--font-color);
+  display: flex;
+  flex-direction: column;
   font-size: 0.7rem;
+  justify-content: center;
   margin: auto;
   margin-top: 1rem;
-  min-height: 2rem;
+  max-height: 3rem;
+  min-height: 3rem;
+  padding: 0.2rem;
   transition: 0.2s;
   width : 28%;
+}
+
+.details-button:not( [ disabled ] ):hover {
+  cursor: pointer;
+  filter: brightness(1.5) drop-shadow(3px 3px 6px var(--secondary-color));
 }
 
 .categories-button-last {
   align-self: center;
   background: var(--secondary-color);
   border-radius: 8px;
+  bottom: 0;
   color: var(--font-color);
   font-size: 0.7rem;
-  margin: auto;
-  margin-bottom: 2rem;
-  margin-top: 1rem;
+  left: 0;
   min-height: 2rem;
+  position: fixed;
   transition: 0.2s;
   width : 28%;
+}
 
+.details-icon {
+  width: 20px;
+}
+
+.categories-button-last:not( [ disabled ] ):hover {
+  filter: brightness(1.5) drop-shadow(3px 3px 6px var(--secondary-color));
 }
 
 .categories-button:not( [ disabled ] ):hover {
@@ -404,6 +422,10 @@ header .form-btn {
   width: 100%;
 }
 
+.overflow {
+  overflow: hidden;
+}
+
 .i-test {
   border-radius: 10px;
 }
@@ -426,3 +448,4 @@ header .form-btn {
   color: inherit;
   text-decoration: underline;
 }
+
