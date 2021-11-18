@@ -1,25 +1,63 @@
-import React from 'react';
+import React, { useState } from 'react';
 import PropTypes from 'prop-types';
 import useRecipeDetails from '../hooks/useRecipeDetails';
+import ShareRecipeButton from '../components/ShareRecipeButton';
+import { getLocalStorage } from '../localStorage';
 // import { doneRecipes } from '../localStorage';
 
 export default function Progresso({ match: { params: { recipeID } } }) {
   const { recipe, loading } = useRecipeDetails(recipeID);
   const { image, title, category, instructions, dosages } = recipe;
-  // const getDoneRecipes = Object
-  //   .values(JSON.parse(window.localStorage.getItem('recipesDone')));
+  
 
-  // const localStorageDoneRecipes = {
-  //   id: recipeID,
-  //   type,
-  //   area: area-da-receita-ou-texto-vazio,
-  //   category: categoria-da-receita-ou-texto-vazio,
-  //   alcoholicOrNot: alcoholic-ou-non-alcoholic-ou-texto-vazio,
-  //   name: nome-da-receita,
-  //   image: imagem-da-receita,
-  //   doneDate: quando-a-receita-foi-concluida,
-  //   tags: array-de-tags-da-receita-ou-array-vazio
+  // const ingredientsNames = Object.keys(recipe.dosages);
+  // console.log(ingredientsNames);
+
+  // let recipeType;
+
+  // if ( === 'meals') {
+  //   recipeType = 'comidas';
+  // } if ( === 'drinks') {
+  //   recipeType = 'bebidas';
+  // }
+
+  // const defaultIngredientsStatusState = async () => {
+  //   const ingrediente = await recipe.dosages;
+  //   const value = await ingrediente.reduce(
+  //     (status, ingredient) => ({ ...status, [ingredient]: false }),
+  //     {},
+  //   );
+  //   return value;
   // };
+
+  // console.log(defaultIngredientsStatusState());
+
+  // let initialIngredientsStatusState = defaultIngredientsStatusState;
+
+  // const inProgressRecipes = getLocalStorage('inProgressRecipes');
+
+  // const getInitialStateFromInProgressRecipes = () => {
+  //   const usedIngredients = inProgressRecipes[recipeType][id];
+  //   return ingredientsNames.reduce(
+  //     (status, ingredient) => (
+  //       {
+  //         ...status,
+  //         [ingredient]: usedIngredients.includes(ingredient),
+  //       }
+  //     ),
+  //     {},
+  //   );
+  // };
+
+  // if (inProgressRecipes && inProgressRecipes[recipeType][id]) {
+  //   initialIngredientsStatusState = getInitialStateFromInProgressRecipes();
+  // }
+
+  const [ingredientsStatus, setIngredientsStatus] = useState('');
+
+  const handleChange = ({ target }) => {
+    setIngredientsStatus({ ...ingredientsStatus, [target.id]: target.checked });
+  };
 
   function renderDosages() {
     return dosages
@@ -27,9 +65,10 @@ export default function Progresso({ match: { params: { recipeID } } }) {
         <label key={ index } htmlFor="dosages" data-testid="ingredient-step">
           {dosage}
           <input
+            onChange={ (e) => handleChange(e) }
             style={ { display: 'flex', flexDirection: 'column' } }
             type="checkbox"
-            id="dosages"
+            id={ dosage }
           />
         </label>
       ));
@@ -40,11 +79,9 @@ export default function Progresso({ match: { params: { recipeID } } }) {
     <div>
       <img alt="Recipe" data-testid="recipe-photo" src={ image } />
       <h1 data-testid="recipe-title">{title}</h1>
-      <button type="button" data-testid="share-btn">
-        Compartilhar
-      </button>
+      <ShareRecipeButton />
       <button type="button" data-testid="favorite-btn">
-        Favoritar
+        Favorita
       </button>
       <h3 data-testid="recipe-category">{category}</h3>
       <form>
