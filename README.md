@@ -10,8 +10,8 @@ O layout tem como foco dispositivos móveis, então todos os protótipos vão es
 
 ## Desenvolvedores dessa Aplicação
 
-Emídio Rebouças https://github.com/emidioreb
-Leomar Linhares https://github.com/LeomarLinhares
-Glauco Lombeira https://github.com/Lombeira
-Thiago Gomez https://github.com/thinito
+Emídio Rebouças https://github.com/emidioreb .
+Leomar Linhares https://github.com/LeomarLinhares .
+Glauco Lombeira https://github.com/Lombeira .
+Thiago Gomez https://github.com/thinito .
 
